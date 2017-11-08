@@ -2,6 +2,11 @@
 package Canyon.managers;
 
 import Canyon.db.tables.EmployeesTable;
+import Canyon.employees.Employee;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EditEmployee extends javax.swing.JFrame {
     
@@ -11,7 +16,11 @@ public class EditEmployee extends javax.swing.JFrame {
         employeesTable = EmployeesTable.getInstance();
         initComponents();
         addPanel.setVisible(false);
-        refreshNames();
+        try {
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(EditEmployee.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -269,19 +278,24 @@ public class EditEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-        // TODO add your handling code here:
-        refreshNames();
+        try {
+            // TODO add your handling code here:
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(EditEmployee.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_refreshButtonActionPerformed
 
-    public void refreshNames() {
+    public void refreshNames() throws SQLException {
+        
         String setEmpList = "";
-            
-            for (int i = 0; i < employeesTable.ViewAllEmployeeLogins().size(); i++) {
-            setEmpList += (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(0) + 
-                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(1)) +
-                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(2)) + 
-                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(3)) + 
-                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(4)) + "\n");
+        ArrayList<Employee> employees = employeesTable.getAllEmployees();
+        
+        for (int i = 0; i < employees.size(); i++) {
+            setEmpList += (employees.get(i).getfName()) + 
+                    " " + (employees.get(i).getlName()) +
+                    " " + (employees.get(i).getUserName()) + 
+                    " " + (employees.get(i).getPosition()) + "\n";
         }
         
         empListTextArea.setText(setEmpList);

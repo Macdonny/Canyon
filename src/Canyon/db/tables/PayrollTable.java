@@ -26,6 +26,7 @@ public class PayrollTable {
         return instance;
     }
     
+    //Add Payroll table to SQL DB
     public void create() {
         PreparedStatement prep;
         

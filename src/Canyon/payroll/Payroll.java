@@ -6,7 +6,11 @@
 package Canyon.payroll;
 import Canyon.db.tables.EmployeesTable;
 import Canyon.db.tables.PayrollTable;
+import Canyon.employees.Employee;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -18,6 +22,7 @@ public class Payroll extends javax.swing.JFrame {
     EmployeesTable employeesTable;
     PayrollTable payrollTable;
     DefaultListModel<String> model = new DefaultListModel<>();
+    String[] employeeList = new String[100];
     String[] employeeUsername = new String[100];
     
     /**
@@ -26,7 +31,25 @@ public class Payroll extends javax.swing.JFrame {
     public Payroll() {
         employeesTable = EmployeesTable.getInstance();
         payrollTable = PayrollTable.getInstance();
+        try {
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(Payroll.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
+    }
+    
+    public void refreshNames() throws SQLException {
+        
+        ArrayList<Employee> employees = employeesTable.getAllEmployees();
+        String employeeName;
+
+        for (int i = 0; i < employees.size(); i++) {
+            employeeName = (employees.get(i).getfName()) + 
+                    " " + (employees.get(i).getlName());
+            employeeList[i] = employeeName;
+            employeeUsername[i] = employees.get(i).getUserName();
+        }
     }
 
     /**
@@ -63,17 +86,7 @@ public class Payroll extends javax.swing.JFrame {
 
         jLabel1.setText("Employees on Payroll");
 
-        String employeeName;
-        String[] employeeList = new String[100];
-
-        for (int i = 0; i < employeesTable.ViewAllEmployeeLogins().size(); i++) {
-            employeeName = employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(0) +
-            " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(1));
-            employeeList[i] = employeeName;
-            employeeUsername[i] = employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(2);
-        }
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return employeeList.length; }
             public String getElementAt(int i) { return employeeList[i]; }
         });

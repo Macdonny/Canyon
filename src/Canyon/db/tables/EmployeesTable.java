@@ -5,6 +5,7 @@
  */
 package Canyon.db.tables;
 import static Canyon.db.CanyonDatabase.conn;
+import Canyon.employees.Employee;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +22,6 @@ public class EmployeesTable {
     //create an object of SingleObject
     private static EmployeesTable instance = new EmployeesTable();
     
-    //Add Employee table to SQL DB
     private EmployeesTable() {  
     }
     
@@ -30,6 +30,7 @@ public class EmployeesTable {
         return instance;
     }
     
+    //Add Employee table to SQL DB
     public void create() {
         PreparedStatement prep;
         
@@ -49,22 +50,36 @@ public class EmployeesTable {
     
     // View all Employee records -- used by Login JFrame and Manager
     // This may be causing my cursor error, too.
-    public ArrayList<String> ViewAllEmployeeLogins(){
-        ArrayList<String> names = new ArrayList();
+    public ArrayList<Employee> getAllEmployees() throws SQLException {
+        
+        ArrayList<Employee> employees = new ArrayList();
+        String sql = "Select * from Employee";
+        ResultSet query = null;
         
         try {
-            PreparedStatement prep = conn.prepareStatement("Select username from Employee");
-            ResultSet query = prep.executeQuery();
+            PreparedStatement prep = conn.prepareStatement(sql);
+            query = prep.executeQuery();
             query.next();
             
             while(query.next()){
-                names.add(query.getString(1));
+                Employee employee = new Employee();
+                employee.setfName(query.getString("fname"));
+                employee.setlName(query.getString("lname"));
+                employee.setUserName(query.getString("username"));
+                employee.setPassword(query.getString("password"));
+                employee.setPosition(query.getInt("position"));
+                employees.add(employee);
             }
         }
-        catch(SQLException sql) {
-            System.out.println(sql.getMessage());
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            if(query != null) {
+                query.close();
+            }
         }
-        return names;
+        return employees;
     }
     
     // View an Employee record.

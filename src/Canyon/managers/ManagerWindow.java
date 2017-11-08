@@ -3,10 +3,15 @@ package Canyon.managers;
 
 import Canyon.db.tables.EmployeesTable;
 import Canyon.db.tables.MenuTable;
+import Canyon.employees.Employee;
 import Canyon.payroll.Payroll;
 import Canyon.menu.AddMenuItem;
 import Canyon.menu.EditMenuItem;
 import Canyon.menu.RemoveMenuItem;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class ManagerWindow extends javax.swing.JFrame {
@@ -18,19 +23,24 @@ public class ManagerWindow extends javax.swing.JFrame {
         employeesTable = EmployeesTable.getInstance();
         menuTable = MenuTable.getInstance();
         initComponents();
-        refreshNames();
+        try {
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         refreshMenu();
     }
     
-    public void refreshNames() {
-        String setEmpList = "";
+    public void refreshNames() throws SQLException {
         
-        for (int i = 0; i < employeesTable.ViewAllEmployeeLogins().size(); i++) {
-            setEmpList += (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(0) + 
-                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(1)) +
-                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(2)) + 
-                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(3)) + 
-                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(4)) + "\n");
+        String setEmpList = "";
+        ArrayList<Employee> employees = employeesTable.getAllEmployees();
+        
+        for (int i = 0; i < employees.size(); i++) {
+            setEmpList += (employees.get(i).getfName()) + 
+                    " " + (employees.get(i).getlName()) +
+                    " " + (employees.get(i).getUserName()) + 
+                    " " + (employees.get(i).getPosition()) + "\n";
         }
         
         empListTextArea.setText(setEmpList);
@@ -337,13 +347,21 @@ public class ManagerWindow extends javax.swing.JFrame {
         
         AddEmployee aE = new AddEmployee ();
         aE.setVisible(true);
-        refreshNames();
+        try {
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_empAddButtonActionPerformed
 
     private void empRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empRefreshButtonActionPerformed
-        // TODO add your handling code here:
-        refreshNames();
+        try {
+            // TODO add your handling code here:
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_empRefreshButtonActionPerformed
 
@@ -352,7 +370,11 @@ public class ManagerWindow extends javax.swing.JFrame {
         
         RemoveEmployee rE = new RemoveEmployee ();
         rE.setVisible(true);
-        refreshNames();
+        try {
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_empRemoveButtonActionPerformed
 
@@ -361,7 +383,11 @@ public class ManagerWindow extends javax.swing.JFrame {
         
         EditEmployee eE = new EditEmployee ();
         eE.setVisible(true);
-        refreshNames();
+        try {
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_empEditButtonActionPerformed
 
@@ -383,7 +409,11 @@ public class ManagerWindow extends javax.swing.JFrame {
         
         AddMenuItem aMI = new AddMenuItem ();
         aMI.setVisible(true);
-        refreshNames();
+        try {
+            refreshNames();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuAddButtonActionPerformed
 
     private void menuRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRemoveButtonActionPerformed

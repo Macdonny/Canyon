@@ -27,6 +27,7 @@ public class MenuTable {
         return instance;
     }
     
+    //Add Menu table to SQL DB
     public void create() {
         PreparedStatement prep;
         

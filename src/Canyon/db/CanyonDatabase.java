@@ -11,52 +11,32 @@ import Canyon.db.tables.*;
 
 public class CanyonDatabase {
     static final String JDBC_DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    static String DB_URL = "jdbc:derby://localhost:1527/";
+    static String DB_URL = "jdbc:derby://localhost:1527/" + "CanyonDatabase" + ";user=" + "root" + ";password=" + "toor";
     
     // Netbeans comes with the server drivers needed to use this Derby server, which
     // is good so Bhola will not have problems running it when he is grading.
     
-    public static Statement stmt;
-    public static Connection conn;
+    public static Statement stmt = null;
+    public static Connection conn = null;
     
     EmployeesTable employeesTable;
     MenuTable menuTable;
     PayrollTable payrollTable;
 
-// Connect to the local Derby/SQL database
-// Username for the Database is "root" and the password is "toor"
-    public CanyonDatabase(){
+    // Connect to the local Derby/SQL database
+    // Username for the Database is "root" and the password is "toor"
+    public CanyonDatabase() throws SQLException{
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
-            DB_URL = DB_URL + "CanyonDatabase" + ";user=" + "root" + ";password=" + "toor";
             conn = DriverManager.getConnection(DB_URL);
             stmt = conn.createStatement();
             build();
         }
-        catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
         }
     }
     
-    // End DB connection
-    public void end(){
-        try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException se) {
-            }
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-    }
-
 // Create SQL tables
     public void build(){
         employeesTable = EmployeesTable.getInstance();
@@ -74,19 +54,10 @@ public class CanyonDatabase {
         
     }
     
-    public static String dispNull(String input) {
-        if (input == null || input.length() == 0) {
-            return "N/A";
-        } else {
-            return input;
-        }
-    }
-      
-// Other methods here:
+    // Other methods here:
     // Table
     // Inventory
     // Chef
     // Bill/Check
     // Reports, etc.
-    
 }

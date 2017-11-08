@@ -6,6 +6,9 @@
 package Canyon;
 
 import Canyon.db.CanyonDatabase;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,7 +16,11 @@ import Canyon.db.CanyonDatabase;
  */
 public class CanyonMain {
     public static void main(String[] args) {
-        CanyonDatabase db = new CanyonDatabase();
+        try {
+            CanyonDatabase db = new CanyonDatabase();
+        } catch (SQLException ex) {
+            Logger.getLogger(CanyonMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Login loginView = new Login();
         loginView.setVisible(true);
     }
