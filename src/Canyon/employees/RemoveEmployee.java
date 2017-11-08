@@ -1,14 +1,15 @@
-package Canyon.employee;
+package Canyon.employees;
 
-import Canyon.CanyonDatabase;
+import Canyon.db.tables.EmployeesTable;
 
 public class RemoveEmployee extends javax.swing.JFrame {
-    CanyonDatabase rD;
+    
+    EmployeesTable employeesTable;
 
-    public RemoveEmployee(CanyonDatabase r) {
-        rD = r;
+    public RemoveEmployee() {
+        employeesTable = EmployeesTable.getInstance();
         initComponents();
-        refreshNames(rD);
+        refreshNames();
         confirmButton.setVisible(false);
     }
 
@@ -156,8 +157,8 @@ public class RemoveEmployee extends javax.swing.JFrame {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
 
-        rD.RemoveEmployee(removeTextField.getText());
-        System.out.println("Removed: " + rD.ViewEmployee(removeTextField.getText()));
+        employeesTable.RemoveEmployee(removeTextField.getText());
+        System.out.println("Removed: " + employeesTable.ViewEmployee(removeTextField.getText()));
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
 
@@ -168,7 +169,7 @@ public class RemoveEmployee extends javax.swing.JFrame {
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
-        refreshNames(rD);
+        refreshNames();
 
     }//GEN-LAST:event_refreshButtonActionPerformed
 
@@ -185,7 +186,7 @@ public class RemoveEmployee extends javax.swing.JFrame {
     private void validateNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateNameButtonActionPerformed
         // TODO add your handling code here:
 
-        if (rD.VerifyLogin(removeTextField.getText())) {
+        if (employeesTable.VerifyLogin(removeTextField.getText())) {
             confirmButton.setVisible(true);
         } else {
             confirmButton.setVisible(false);
@@ -197,15 +198,15 @@ public class RemoveEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_removeTextFieldActionPerformed
 
-    public void refreshNames(CanyonDatabase rD) {
+    public void refreshNames() {
         String setEmpList = "";
         
-        for (int i = 0; i < rD.ViewAllEmployeeLogins().size(); i++) {
-            setEmpList += (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(0) + 
-                    " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(1)) +
-                    " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(2)) + 
-                    " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(3)) + 
-                    " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(4)) + "\n");
+        for (int i = 0; i < employeesTable.ViewAllEmployeeLogins().size(); i++) {
+            setEmpList += (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(0) + 
+                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(1)) +
+                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(2)) + 
+                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(3)) + 
+                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(4)) + "\n");
         }
         
         empListTextArea.setText(setEmpList);
@@ -241,7 +242,7 @@ public class RemoveEmployee extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new RemoveEmployee().setVisible(true);
+                new RemoveEmployee().setVisible(true);
             }
         });
     }

@@ -1,16 +1,17 @@
 
 package Canyon.menu;
-import Canyon.CanyonDatabase;
+import Canyon.db.tables.MenuTable;
 import java.awt.Color;
 
 public class EditMenuItem extends javax.swing.JFrame {
-    CanyonDatabase rD;
 
-    public EditMenuItem(CanyonDatabase r) {
-        rD = r;
+    MenuTable menuTable;
+
+    public EditMenuItem() {
+        menuTable = MenuTable.getInstance();
         initComponents();
         addPanel.setVisible(false);
-        refreshMenu(rD);
+        refreshMenu();
     }
 
     /**
@@ -229,7 +230,7 @@ public class EditMenuItem extends javax.swing.JFrame {
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
-        refreshMenu(rD);
+        refreshMenu();
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void clearText(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearText
@@ -245,11 +246,11 @@ public class EditMenuItem extends javax.swing.JFrame {
     private void validateNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateNameButtonActionPerformed
         // TODO add your handling code here:
 
-        if (rD.isMenuItem(removeTextField.getText())) {
+        if (menuTable.isMenuItem(removeTextField.getText())) {
             addPanel.setVisible(true);
             confirmButton.setVisible(false);
-            itemNameTextField.setText(rD.getItemData(removeTextField.getText()).get(0));
-            priceTextField.setText(rD.getItemData(removeTextField.getText()).get(1));
+            itemNameTextField.setText(menuTable.getItemData(removeTextField.getText()).get(0));
+            priceTextField.setText(menuTable.getItemData(removeTextField.getText()).get(1));
         } else {
             addPanel.setVisible(false);
         }
@@ -311,20 +312,20 @@ public class EditMenuItem extends javax.swing.JFrame {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
 
-        rD.deleteItem(removeTextField.getText());
-        rD.insertItem(itemNameTextField.getText(), Integer.parseInt(priceTextField.getText()));
+        menuTable.deleteItem(removeTextField.getText());
+        menuTable.insertItem(itemNameTextField.getText(), Integer.parseInt(priceTextField.getText()));
 
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
 
     
-    public void refreshMenu(CanyonDatabase rD) {
+    public void refreshMenu() {
         
         String setMenuList = "";
         
-        for (int i = 0; i < rD.getAllItems().size(); i++) {
-            setMenuList += (rD.getItemData(rD.getAllItems().get(i)).get(0) + 
-                    " " + rD.getItemData(rD.getAllItems().get(i)).get(1) +  "\n");
+        for (int i = 0; i < menuTable.getAllItems().size(); i++) {
+            setMenuList += (menuTable.getItemData(menuTable.getAllItems().get(i)).get(0) + 
+                    " " + menuTable.getItemData(menuTable.getAllItems().get(i)).get(1) +  "\n");
         }
         
         itemListTextArea.setText(setMenuList);
@@ -360,7 +361,7 @@ public class EditMenuItem extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new EditMenuItem().setVisible(true);
+                new EditMenuItem().setVisible(true);
             }
         });
     }

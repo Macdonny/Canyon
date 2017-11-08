@@ -1,13 +1,14 @@
 package Canyon.menu;
 
-import Canyon.CanyonDatabase;
+import Canyon.db.tables.MenuTable;
 import java.awt.Color;
 
 public class AddMenuItem extends javax.swing.JFrame {
-    CanyonDatabase rD;
 
-    public AddMenuItem(CanyonDatabase r) {
-        rD = r;
+    MenuTable menuTable;
+    
+    public AddMenuItem() {
+        menuTable = MenuTable.getInstance();
         initComponents();
         confirmButton.setVisible(false);
     }
@@ -147,7 +148,7 @@ public class AddMenuItem extends javax.swing.JFrame {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
 
-        rD.insertItem(itemNameTextField.getText(), Integer.parseInt(priceTextField.getText()));
+        menuTable.insertItem(itemNameTextField.getText(), Integer.parseInt(priceTextField.getText()));
         
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
@@ -230,7 +231,7 @@ public class AddMenuItem extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new AddMenuItem().setVisible(true);
+                new AddMenuItem().setVisible(true);
             }
         });
     }

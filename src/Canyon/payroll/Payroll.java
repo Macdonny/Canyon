@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package Canyon.payroll;
-import Canyon.CanyonDatabase;
-import javax.swing.JList;
+import Canyon.db.tables.EmployeesTable;
+import Canyon.db.tables.PayrollTable;
 import java.util.*;
 import javax.swing.DefaultListModel;
 
@@ -14,23 +14,18 @@ import javax.swing.DefaultListModel;
  * @author macdonny
  */
 public class Payroll extends javax.swing.JFrame {
-    CanyonDatabase rD;
+    
+    EmployeesTable employeesTable;
+    PayrollTable payrollTable;
     DefaultListModel<String> model = new DefaultListModel<>();
     String[] employeeUsername = new String[100];
     
     /**
      * Creates new form NewJFrame
-     * @param r
-     */
-    public Payroll(CanyonDatabase r) {
-        rD = r;
-        initComponents();
-    }
-    
-        /**
-     * Creates new form NewJFrame
      */
     public Payroll() {
+        employeesTable = EmployeesTable.getInstance();
+        payrollTable = PayrollTable.getInstance();
         initComponents();
     }
 
@@ -71,11 +66,11 @@ public class Payroll extends javax.swing.JFrame {
         String employeeName;
         String[] employeeList = new String[100];
 
-        for (int i = 0; i < rD.ViewAllEmployeeLogins().size(); i++) {
-            employeeName = rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(0) +
-            " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(1));
+        for (int i = 0; i < employeesTable.ViewAllEmployeeLogins().size(); i++) {
+            employeeName = employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(0) +
+            " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(1));
             employeeList[i] = employeeName;
-            employeeUsername[i] = rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(2);
+            employeeUsername[i] = employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(2);
         }
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -163,7 +158,7 @@ public class Payroll extends javax.swing.JFrame {
         employeeInfo.put("name", jList1.getSelectedValue());
         
         ArrayList<String> employeePayroll = new ArrayList();
-        employeePayroll = rD.getEmployeePayrollInfo(employeeUsername[jList1.getSelectedIndex()]);
+        employeePayroll = payrollTable.getEmployeePayrollInfo(employeeUsername[jList1.getSelectedIndex()]);
         
         String employeeInfoString = 
                 "Name: " + employeeInfo.get("name") + "\n" 

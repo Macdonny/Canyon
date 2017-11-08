@@ -1,14 +1,15 @@
 package Canyon.menu;
 
-import Canyon.CanyonDatabase;
+import Canyon.db.tables.MenuTable;
 
 public class RemoveMenuItem extends javax.swing.JFrame {
-    CanyonDatabase rD;
+    
+    MenuTable menuTable;
 
-    public RemoveMenuItem(CanyonDatabase r) {
-        rD = r;
+    public RemoveMenuItem() {
+        menuTable = MenuTable.getInstance();
         initComponents();
-        refreshMenu(rD);
+        refreshMenu();
         confirmButton.setVisible(false);
     }
 
@@ -149,8 +150,8 @@ public class RemoveMenuItem extends javax.swing.JFrame {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
 
-        rD.deleteItem(removeTextField.getText());
-        System.out.println("Removed: " + rD.getItemData(removeTextField.getText()));
+        menuTable.deleteItem(removeTextField.getText());
+        System.out.println("Removed: " + menuTable.getItemData(removeTextField.getText()));
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
 
@@ -161,7 +162,7 @@ public class RemoveMenuItem extends javax.swing.JFrame {
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
-        refreshMenu(rD);
+        refreshMenu();
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void RTFclearText(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RTFclearText
@@ -177,20 +178,20 @@ public class RemoveMenuItem extends javax.swing.JFrame {
     private void validateNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateNameButtonActionPerformed
         // TODO add your handling code here:
 
-        if (rD.isMenuItem(removeTextField.getText())) {
+        if (menuTable.isMenuItem(removeTextField.getText())) {
             confirmButton.setVisible(true);
         } else {
             confirmButton.setVisible(false);
         }
     }//GEN-LAST:event_validateNameButtonActionPerformed
 
-    public void refreshMenu(CanyonDatabase rD) {
+    public void refreshMenu() {
         
         String setMenuList = "";
         
-        for (int i = 0; i < rD.getAllItems().size(); i++) {
-            setMenuList += (rD.getItemData(rD.getAllItems().get(i)).get(0) + 
-                    " " + rD.getItemData(rD.getAllItems().get(i)).get(1) +  "\n");
+        for (int i = 0; i < menuTable.getAllItems().size(); i++) {
+            setMenuList += (menuTable.getItemData(menuTable.getAllItems().get(i)).get(0) + 
+                    " " + menuTable.getItemData(menuTable.getAllItems().get(i)).get(1) +  "\n");
         }
         
         itemListTextArea.setText(setMenuList);
@@ -227,7 +228,7 @@ public class RemoveMenuItem extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new RemoveMenuItem().setVisible(true);
+                new RemoveMenuItem().setVisible(true);
             }
         });
     }

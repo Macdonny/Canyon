@@ -5,13 +5,17 @@ depends on the user's access. For example, being a manager would bring up the ma
 screen as an option (or just the normal table display), and a host and server
 would not see the manager options.
  */
-import Canyon.manager.ManagerWindow;
+import Canyon.db.tables.EmployeesTable;
+import Canyon.managers.ManagerWindow;
 import java.util.ArrayList;
+
 public class Login extends javax.swing.JFrame {
+    
+    EmployeesTable employeesTable;
     boolean login = false;
-    CanyonDatabase rd = new CanyonDatabase ();
       
     public Login() {
+        employeesTable = EmployeesTable.getInstance();
         initComponents();
         invalidText.setVisible(false);
     }
@@ -29,8 +33,7 @@ public class Login extends javax.swing.JFrame {
    public void addInitialEmployees () {
         // FirstName, LastName, Username, Password, Position, Hourly Wage
         // Manager = 1, Waiter = 2, Host = 3
-        
-       rd.AddEmployee("root", "toor", "root", "root", 1);
+        employeesTable.AddEmployee("root", "toor", "root", "root", 1);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -165,20 +168,20 @@ public class Login extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String username =  userField.getText();
         String password =  passField.getText();
-        System.out.println(rd.ViewEmployee("1"));
+        System.out.println(employeesTable.ViewEmployee("1"));
 
         // Checks to see if the username is in database
-        if (rd.VerifyLogin(username)) {
-            if (password.equals(rd.ViewEmployee(username).get(3))) {
+        if (employeesTable.VerifyLogin(username)) {
+            if (password.equals(employeesTable.ViewEmployee(username).get(3))) {
                 this.login = true;
                 invalidText.setVisible(false);
                 
                 // If the user is a manager, load the manager window
-                if (Integer.parseInt(rd.ViewEmployee(username).get(4)) == 1) {
+                if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 1) {
                     System.out.println("Manager Login");
-                    ManagerWindow mW = new ManagerWindow(rd);
+                    ManagerWindow mW = new ManagerWindow();
                     mW.setVisible(true);
-                } else if (Integer.parseInt(rd.ViewEmployee(username).get(4)) == 2) {
+                } else if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 2) {
                     System.out.println("Server Login");
                     // Server JFrame would now open
                     //ADD: If Chef
@@ -230,20 +233,20 @@ public class Login extends javax.swing.JFrame {
          String username =  userField.getText();
         String password =  passField.getText();
         
-        System.out.println(rd.ViewEmployee("1"));
+        System.out.println(employeesTable.ViewEmployee("1"));
 
         // Checks to see if the username is in database
-        if (rd.VerifyLogin(username)) {
-            if (password.equals(rd.ViewEmployee(username).get(3))) {
+        if (employeesTable.VerifyLogin(username)) {
+            if (password.equals(employeesTable.ViewEmployee(username).get(3))) {
                 this.login = true;
                 invalidText.setVisible(false);
                 
                 // If the user is a manager, load the manager window
-                if (Integer.parseInt(rd.ViewEmployee(username).get(4)) == 1) {
+                if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 1) {
                     System.out.println("Manager Login");
-                    ManagerWindow mW = new ManagerWindow(rd);
+                    ManagerWindow mW = new ManagerWindow();
                     mW.setVisible(true);
-                } else if (Integer.parseInt(rd.ViewEmployee(username).get(4)) == 2) {
+                } else if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 2) {
                     System.out.println("Server Login");
                     // Server JFrame would now open
                     // Need to create Host and Chef JFrames

@@ -1,13 +1,15 @@
 
-package Canyon.employee;
+package Canyon.employees;
 
-import Canyon.CanyonDatabase;
+import Canyon.db.tables.EmployeesTable;
 
 public class AddEmployee extends javax.swing.JFrame {
-    CanyonDatabase rD;
+    
+    EmployeesTable employeesTable;
 
-    public AddEmployee(CanyonDatabase r) {
-        rD = r;
+
+    public AddEmployee() {
+        employeesTable = EmployeesTable.getInstance();
         initComponents();
         confirmButton.setVisible(false);
     }
@@ -224,8 +226,8 @@ public class AddEmployee extends javax.swing.JFrame {
             level = 2;
         }
         
-        rD.AddEmployee(firstNameTextField.getText(), lastNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), level);
-        System.out.println("Added" + rD.ViewEmployee(firstNameTextField.getText()));
+        employeesTable.AddEmployee(firstNameTextField.getText(), lastNameTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), level);
+        System.out.println("Added" + employeesTable.ViewEmployee(firstNameTextField.getText()));
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
 

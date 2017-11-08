@@ -124,7 +124,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jList1MouseClicked"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String employeeName;&#xa;String[] employeeList = new String[100];&#xa;&#xa;for (int i = 0; i &lt; rD.ViewAllEmployeeLogins().size(); i++) {&#xa;    employeeName = rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(0) +&#xa;    &quot; &quot; + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(1));&#xa;    employeeList[i] = employeeName;&#xa;    employeeUsername[i] = rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(2);&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String employeeName;&#xa;String[] employeeList = new String[100];&#xa;&#xa;for (int i = 0; i &lt; employeesTable.ViewAllEmployeeLogins().size(); i++) {&#xa;    employeeName = employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(0) +&#xa;    &quot; &quot; + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(1));&#xa;    employeeList[i] = employeeName;&#xa;    employeeUsername[i] = employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(2);&#xa;}"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>

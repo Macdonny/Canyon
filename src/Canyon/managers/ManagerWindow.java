@@ -1,48 +1,51 @@
 
-package Canyon.manager;
+package Canyon.managers;
 
-import Canyon.CanyonDatabase;
+import Canyon.db.tables.EmployeesTable;
+import Canyon.db.tables.MenuTable;
 import Canyon.payroll.Payroll;
 import Canyon.menu.AddMenuItem;
 import Canyon.menu.EditMenuItem;
 import Canyon.menu.RemoveMenuItem;
-import Canyon.employee.AddEmployee;
-import Canyon.employee.RemoveEmployee;
-import Canyon.employee.EditEmployee;
+import Canyon.employees.AddEmployee;
+import Canyon.employees.RemoveEmployee;
+import Canyon.employees.EditEmployee;
 
 
 public class ManagerWindow extends javax.swing.JFrame {
-    CanyonDatabase rD;
+    
+    EmployeesTable employeesTable;
+    MenuTable menuTable;
 
-    public ManagerWindow(CanyonDatabase r) {
-        rD = r;
+    public ManagerWindow() {
+        employeesTable = EmployeesTable.getInstance();
+        menuTable = MenuTable.getInstance();
         initComponents();
-        refreshNames(rD);
-        refreshMenu(rD);
-        
+        refreshNames();
+        refreshMenu();
     }
     
-    public void refreshNames(CanyonDatabase rD) {
+    public void refreshNames() {
         String setEmpList = "";
         
-        for (int i = 0; i < rD.ViewAllEmployeeLogins().size(); i++) {
-            setEmpList += (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(0) + 
-                    " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(1)) +
-                    " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(2)) + 
-                    " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(3)) + 
-                    " " + (rD.ViewEmployee(rD.ViewAllEmployeeLogins().get(i)).get(4)) + "\n");
+        for (int i = 0; i < employeesTable.ViewAllEmployeeLogins().size(); i++) {
+            setEmpList += (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(0) + 
+                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(1)) +
+                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(2)) + 
+                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(3)) + 
+                    " " + (employeesTable.ViewEmployee(employeesTable.ViewAllEmployeeLogins().get(i)).get(4)) + "\n");
         }
         
         empListTextArea.setText(setEmpList);
     }
     
-    public void refreshMenu(CanyonDatabase rD) {
+    public void refreshMenu() {
         
         String setMenuList = "";
         
-        for (int i = 0; i < rD.getAllItems().size(); i++) {
-            setMenuList += (rD.getItemData(rD.getAllItems().get(i)).get(0) + 
-                    " " + rD.getItemData(rD.getAllItems().get(i)).get(1) +  "\n");
+        for (int i = 0; i < menuTable.getAllItems().size(); i++) {
+            setMenuList += (menuTable.getItemData(menuTable.getAllItems().get(i)).get(0) + 
+                    " " + menuTable.getItemData(menuTable.getAllItems().get(i)).get(1) +  "\n");
         }
         
         menuListTextArea.setText(setMenuList);
@@ -335,33 +338,33 @@ public class ManagerWindow extends javax.swing.JFrame {
     private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
         // TODO add your handling code here:
         
-        AddEmployee aE = new AddEmployee (rD);
+        AddEmployee aE = new AddEmployee ();
         aE.setVisible(true);
-        refreshNames(rD);
+        refreshNames();
         
     }//GEN-LAST:event_empAddButtonActionPerformed
 
     private void empRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empRefreshButtonActionPerformed
         // TODO add your handling code here:
-        refreshNames(rD);
+        refreshNames();
         
     }//GEN-LAST:event_empRefreshButtonActionPerformed
 
     private void empRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empRemoveButtonActionPerformed
         // TODO add your handling code here:
         
-        RemoveEmployee rE = new RemoveEmployee (rD);
+        RemoveEmployee rE = new RemoveEmployee ();
         rE.setVisible(true);
-        refreshNames(rD);
+        refreshNames();
         
     }//GEN-LAST:event_empRemoveButtonActionPerformed
 
     private void empEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empEditButtonActionPerformed
         // TODO add your handling code here:
         
-        EditEmployee eE = new EditEmployee (rD);
+        EditEmployee eE = new EditEmployee ();
         eE.setVisible(true);
-        refreshNames(rD);
+        refreshNames();
         
     }//GEN-LAST:event_empEditButtonActionPerformed
 
@@ -375,35 +378,35 @@ public class ManagerWindow extends javax.swing.JFrame {
 
     private void menuRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRefreshButtonActionPerformed
         // TODO add your handling code here:
-        refreshMenu(rD);
+        refreshMenu();
     }//GEN-LAST:event_menuRefreshButtonActionPerformed
 
     private void menuAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddButtonActionPerformed
         // TODO add your handling code here:
         
-        AddMenuItem aMI = new AddMenuItem (rD);
+        AddMenuItem aMI = new AddMenuItem ();
         aMI.setVisible(true);
-        refreshNames(rD);
+        refreshNames();
     }//GEN-LAST:event_menuAddButtonActionPerformed
 
     private void menuRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRemoveButtonActionPerformed
         // TODO add your handling code here:
-        RemoveMenuItem rME = new RemoveMenuItem (rD);
+        RemoveMenuItem rME = new RemoveMenuItem ();
         rME.setVisible(true);
-        refreshMenu(rD);
+        refreshMenu();
     }//GEN-LAST:event_menuRemoveButtonActionPerformed
 
     private void menuEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditButtonActionPerformed
         // TODO add your handling code here:
-        EditMenuItem eMI = new EditMenuItem (rD);
+        EditMenuItem eMI = new EditMenuItem ();
         eMI.setVisible(true);
-        refreshMenu(rD);
+        refreshMenu();
     }//GEN-LAST:event_menuEditButtonActionPerformed
 
     private void openPayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openPayrollButtonActionPerformed
         // TODO add your handling code here:
 //        this.setVisible(false);
-        Payroll payrollWindow = new Payroll(rD);
+        Payroll payrollWindow = new Payroll();
         payrollWindow.setVisible(true);
     }//GEN-LAST:event_openPayrollButtonActionPerformed
 
@@ -437,7 +440,7 @@ public class ManagerWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ManagerWindow().setVisible(true);
+                new ManagerWindow().setVisible(true);
             }
         });
     }
