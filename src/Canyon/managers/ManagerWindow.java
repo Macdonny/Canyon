@@ -7,9 +7,6 @@ import Canyon.payroll.Payroll;
 import Canyon.menu.AddMenuItem;
 import Canyon.menu.EditMenuItem;
 import Canyon.menu.RemoveMenuItem;
-import Canyon.employees.AddEmployee;
-import Canyon.employees.RemoveEmployee;
-import Canyon.employees.EditEmployee;
 
 
 public class ManagerWindow extends javax.swing.JFrame {

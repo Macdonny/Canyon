@@ -1,4 +1,4 @@
-package Canyon.employees;
+package Canyon.managers;
 
 import Canyon.db.tables.EmployeesTable;
 
