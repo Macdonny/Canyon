@@ -16,6 +16,7 @@ public class Table extends javax.swing.JFrame {
      */
     public Table() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

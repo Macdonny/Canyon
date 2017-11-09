@@ -16,6 +16,7 @@ public class Kitchen extends javax.swing.JFrame {
      */
     public Kitchen() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

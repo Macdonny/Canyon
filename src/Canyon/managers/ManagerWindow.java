@@ -23,6 +23,7 @@ public class ManagerWindow extends javax.swing.JFrame {
         employeesTable = EmployeesTable.getInstance();
         menuTable = MenuTable.getInstance();
         initComponents();
+        this.setLocationRelativeTo(null);
         try {
             refreshNames();
         } catch (SQLException ex) {
@@ -67,35 +68,47 @@ public class ManagerWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         employeePanel = new javax.swing.JPanel();
         empControlPanel = new javax.swing.JPanel();
         empRemoveButton = new javax.swing.JButton();
         empEditButton = new javax.swing.JButton();
         empAddButton = new javax.swing.JButton();
-        logOffButton = new javax.swing.JButton();
+        empRefreshButton = new javax.swing.JButton();
         empLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         empListTextArea = new javax.swing.JTextArea();
-        empRefreshButton = new javax.swing.JButton();
         menuPanel = new javax.swing.JPanel();
         menuLabel = new javax.swing.JLabel();
         menuControlPanel = new javax.swing.JPanel();
         menuRemoveButton = new javax.swing.JButton();
         menuEditButton = new javax.swing.JButton();
         menuAddButton = new javax.swing.JButton();
+        menuRefreshButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         menuListTextArea = new javax.swing.JTextArea();
-        menuRefreshButton = new javax.swing.JButton();
         manWebPanel = new javax.swing.JPanel();
         openPayrollButton = new javax.swing.JButton();
+        logOffButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manager");
+        setMinimumSize(new java.awt.Dimension(900, 700));
+        setUndecorated(true);
         setResizable(false);
 
-        employeePanel.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(51, 107, 135));
+
+        employeePanel.setBackground(new java.awt.Color(42, 49, 50));
+        employeePanel.setMaximumSize(new java.awt.Dimension(443, 554));
+        employeePanel.setMinimumSize(new java.awt.Dimension(443, 554));
+
+        empControlPanel.setMaximumSize(new java.awt.Dimension(431, 90));
+        empControlPanel.setMinimumSize(new java.awt.Dimension(431, 90));
 
         empRemoveButton.setText("Remove");
+        empRemoveButton.setMaximumSize(new java.awt.Dimension(100, 80));
+        empRemoveButton.setMinimumSize(new java.awt.Dimension(100, 80));
         empRemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empRemoveButtonActionPerformed(evt);
@@ -103,6 +116,8 @@ public class ManagerWindow extends javax.swing.JFrame {
         });
 
         empEditButton.setText("Edit");
+        empEditButton.setMaximumSize(new java.awt.Dimension(100, 80));
+        empEditButton.setMinimumSize(new java.awt.Dimension(100, 80));
         empEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empEditButtonActionPerformed(evt);
@@ -110,9 +125,231 @@ public class ManagerWindow extends javax.swing.JFrame {
         });
 
         empAddButton.setText("Add");
+        empAddButton.setMaximumSize(new java.awt.Dimension(100, 80));
+        empAddButton.setMinimumSize(new java.awt.Dimension(100, 80));
         empAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empAddButtonActionPerformed(evt);
+            }
+        });
+
+        empRefreshButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        empRefreshButton.setText("Refresh");
+        empRefreshButton.setMaximumSize(new java.awt.Dimension(100, 80));
+        empRefreshButton.setMinimumSize(new java.awt.Dimension(100, 80));
+        empRefreshButton.setPreferredSize(new java.awt.Dimension(100, 80));
+        empRefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empRefreshButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout empControlPanelLayout = new javax.swing.GroupLayout(empControlPanel);
+        empControlPanel.setLayout(empControlPanelLayout);
+        empControlPanelLayout.setHorizontalGroup(
+            empControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(empControlPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(empRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(empEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(empAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(empRefreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        empControlPanelLayout.setVerticalGroup(
+            empControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, empControlPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(empControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(empEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(empAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(empRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(empRefreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(3, 3, 3))
+        );
+
+        empLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        empLabel.setForeground(new java.awt.Color(144, 175, 197));
+        empLabel.setText("Employees");
+
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(430, 400));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(430, 400));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(430, 400));
+
+        empListTextArea.setEditable(false);
+        empListTextArea.setColumns(20);
+        empListTextArea.setFont(new java.awt.Font("Segoe WP Light", 0, 18)); // NOI18N
+        empListTextArea.setRows(5);
+        empListTextArea.setMaximumSize(new java.awt.Dimension(430, 400));
+        empListTextArea.setMinimumSize(new java.awt.Dimension(430, 400));
+        empListTextArea.setPreferredSize(new java.awt.Dimension(430, 400));
+        jScrollPane1.setViewportView(empListTextArea);
+
+        javax.swing.GroupLayout employeePanelLayout = new javax.swing.GroupLayout(employeePanel);
+        employeePanel.setLayout(employeePanelLayout);
+        employeePanelLayout.setHorizontalGroup(
+            employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(employeePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(employeePanelLayout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(empLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(empControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        employeePanelLayout.setVerticalGroup(
+            employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeePanelLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(empLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(empControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        menuPanel.setBackground(new java.awt.Color(42, 49, 50));
+        menuPanel.setMaximumSize(new java.awt.Dimension(443, 554));
+        menuPanel.setMinimumSize(new java.awt.Dimension(443, 554));
+        menuPanel.setPreferredSize(new java.awt.Dimension(443, 554));
+
+        menuLabel.setBackground(new java.awt.Color(102, 102, 102));
+        menuLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        menuLabel.setForeground(new java.awt.Color(144, 175, 197));
+        menuLabel.setText("Menu");
+
+        menuControlPanel.setMaximumSize(new java.awt.Dimension(431, 90));
+        menuControlPanel.setMinimumSize(new java.awt.Dimension(431, 90));
+        menuControlPanel.setPreferredSize(new java.awt.Dimension(431, 90));
+
+        menuRemoveButton.setText("Remove");
+        menuRemoveButton.setMaximumSize(new java.awt.Dimension(100, 80));
+        menuRemoveButton.setMinimumSize(new java.awt.Dimension(100, 80));
+        menuRemoveButton.setPreferredSize(new java.awt.Dimension(100, 80));
+        menuRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRemoveButtonActionPerformed(evt);
+            }
+        });
+
+        menuEditButton.setText("Edit");
+        menuEditButton.setMaximumSize(new java.awt.Dimension(100, 80));
+        menuEditButton.setMinimumSize(new java.awt.Dimension(100, 80));
+        menuEditButton.setPreferredSize(new java.awt.Dimension(100, 80));
+        menuEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditButtonActionPerformed(evt);
+            }
+        });
+
+        menuAddButton.setText("Add");
+        menuAddButton.setMaximumSize(new java.awt.Dimension(100, 80));
+        menuAddButton.setMinimumSize(new java.awt.Dimension(100, 80));
+        menuAddButton.setPreferredSize(new java.awt.Dimension(100, 80));
+        menuAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddButtonActionPerformed(evt);
+            }
+        });
+
+        menuRefreshButton.setText("Refresh");
+        menuRefreshButton.setMaximumSize(new java.awt.Dimension(100, 80));
+        menuRefreshButton.setMinimumSize(new java.awt.Dimension(100, 80));
+        menuRefreshButton.setPreferredSize(new java.awt.Dimension(100, 80));
+        menuRefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuRefreshButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menuControlPanelLayout = new javax.swing.GroupLayout(menuControlPanel);
+        menuControlPanel.setLayout(menuControlPanelLayout);
+        menuControlPanelLayout.setHorizontalGroup(
+            menuControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuControlPanelLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(menuRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(menuEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(menuAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+        menuControlPanelLayout.setVerticalGroup(
+            menuControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuControlPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(menuControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menuRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menuRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        menuListTextArea.setEditable(false);
+        menuListTextArea.setColumns(20);
+        menuListTextArea.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        menuListTextArea.setRows(5);
+        menuListTextArea.setMaximumSize(new java.awt.Dimension(430, 400));
+        menuListTextArea.setMinimumSize(new java.awt.Dimension(430, 400));
+        menuListTextArea.setPreferredSize(new java.awt.Dimension(430, 400));
+        jScrollPane2.setViewportView(menuListTextArea);
+
+        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
+        menuPanel.setLayout(menuPanelLayout);
+        menuPanelLayout.setHorizontalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                        .addComponent(menuLabel)
+                        .addGap(212, 212, 212))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                            .addComponent(menuControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
+                        .addContainerGap())))
+        );
+        menuPanelLayout.setVerticalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(menuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(menuControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        manWebPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout manWebPanelLayout = new javax.swing.GroupLayout(manWebPanel);
+        manWebPanel.setLayout(manWebPanelLayout);
+        manWebPanelLayout.setHorizontalGroup(
+            manWebPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        manWebPanelLayout.setVerticalGroup(
+            manWebPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 129, Short.MAX_VALUE)
+        );
+
+        openPayrollButton.setText("Open Payroll");
+        openPayrollButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openPayrollButtonActionPerformed(evt);
             }
         });
 
@@ -123,220 +360,63 @@ public class ManagerWindow extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout empControlPanelLayout = new javax.swing.GroupLayout(empControlPanel);
-        empControlPanel.setLayout(empControlPanelLayout);
-        empControlPanelLayout.setHorizontalGroup(
-            empControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(empControlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(empRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(empEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(empAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 965, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(manWebPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(1, 1, 1)
+                            .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)))
+                    .addContainerGap()))
         );
-        empControlPanelLayout.setVerticalGroup(
-            empControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, empControlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(empControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(empControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(empAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(empRemoveButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(empEditButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(manWebPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap()))
         );
-
-        empLabel.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        empLabel.setText("Employees");
-
-        empListTextArea.setEditable(false);
-        empListTextArea.setColumns(20);
-        empListTextArea.setFont(new java.awt.Font("Segoe WP Light", 0, 18)); // NOI18N
-        empListTextArea.setRows(5);
-        jScrollPane1.setViewportView(empListTextArea);
-
-        empRefreshButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        empRefreshButton.setText("Refresh");
-        empRefreshButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                empRefreshButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout employeePanelLayout = new javax.swing.GroupLayout(employeePanel);
-        employeePanel.setLayout(employeePanelLayout);
-        employeePanelLayout.setHorizontalGroup(
-            employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
-                    .addComponent(empControlPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, employeePanelLayout.createSequentialGroup()
-                        .addComponent(empLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(empRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        employeePanelLayout.setVerticalGroup(
-            employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(empLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(empRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(empControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        menuPanel.setBackground(new java.awt.Color(102, 102, 102));
-
-        menuLabel.setBackground(new java.awt.Color(102, 102, 102));
-        menuLabel.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        menuLabel.setText("Menu");
-
-        menuRemoveButton.setText("Remove");
-        menuRemoveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRemoveButtonActionPerformed(evt);
-            }
-        });
-
-        menuEditButton.setText("Edit");
-        menuEditButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuEditButtonActionPerformed(evt);
-            }
-        });
-
-        menuAddButton.setText("Add");
-        menuAddButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAddButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout menuControlPanelLayout = new javax.swing.GroupLayout(menuControlPanel);
-        menuControlPanel.setLayout(menuControlPanelLayout);
-        menuControlPanelLayout.setHorizontalGroup(
-            menuControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuControlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(menuRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
-        );
-        menuControlPanelLayout.setVerticalGroup(
-            menuControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuControlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menuControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(menuAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(menuEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(menuRemoveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        menuListTextArea.setEditable(false);
-        menuListTextArea.setColumns(20);
-        menuListTextArea.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        menuListTextArea.setRows(5);
-        jScrollPane2.setViewportView(menuListTextArea);
-
-        menuRefreshButton.setText("Refresh");
-        menuRefreshButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuRefreshButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
-        menuPanel.setLayout(menuPanelLayout);
-        menuPanelLayout.setHorizontalGroup(
-            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addComponent(menuLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(menuRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(menuControlPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        menuPanelLayout.setVerticalGroup(
-            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(menuLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(menuRefreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(menuControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        manWebPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout manWebPanelLayout = new javax.swing.GroupLayout(manWebPanel);
-        manWebPanel.setLayout(manWebPanelLayout);
-        manWebPanelLayout.setHorizontalGroup(
-            manWebPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-        manWebPanelLayout.setVerticalGroup(
-            manWebPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 369, Short.MAX_VALUE)
-        );
-
-        openPayrollButton.setText("Open Payroll");
-        openPayrollButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openPayrollButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104)
-                .addComponent(manWebPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(employeePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manWebPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -481,6 +561,7 @@ public class ManagerWindow extends javax.swing.JFrame {
     private javax.swing.JButton empRefreshButton;
     private javax.swing.JButton empRemoveButton;
     private javax.swing.JPanel employeePanel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logOffButton;

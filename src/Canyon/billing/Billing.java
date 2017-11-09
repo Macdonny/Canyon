@@ -16,6 +16,7 @@ public class Billing extends javax.swing.JFrame {
      */
     public Billing() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

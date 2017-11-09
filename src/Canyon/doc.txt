@@ -1,0 +1,5 @@
+    Color Scheme
+MIST            #90AFC5
+STONE           #336B87
+SHADOW          #2A3132
+AUTUMN FOLIAGE  #763626 
