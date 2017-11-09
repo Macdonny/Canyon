@@ -8,18 +8,18 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EditEmployee extends javax.swing.JFrame {
+public class EditEmployeeView extends javax.swing.JFrame {
     
     EmployeesTable employeesTable;
     
-    public EditEmployee() {
+    public EditEmployeeView() {
         employeesTable = EmployeesTable.getInstance();
         initComponents();
         addPanel.setVisible(false);
         try {
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(EditEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditEmployeeView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -282,7 +282,7 @@ public class EditEmployee extends javax.swing.JFrame {
             // TODO add your handling code here:
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(EditEmployee.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditEmployeeView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_refreshButtonActionPerformed
 
@@ -384,20 +384,21 @@ public class EditEmployee extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployeeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployeeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployeeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployeeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditEmployee().setVisible(true);
+                new EditEmployeeView().setVisible(true);
             }
         });
     }

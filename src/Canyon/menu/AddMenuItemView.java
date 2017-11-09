@@ -1,15 +1,15 @@
 package Canyon.menu;
 
 import Canyon.db.tables.MenuTable;
+import java.awt.Color;
 
-public class RemoveMenuItem extends javax.swing.JFrame {
-    
+public class AddMenuItemView extends javax.swing.JFrame {
+
     MenuTable menuTable;
-
-    public RemoveMenuItem() {
+    
+    public AddMenuItemView() {
         menuTable = MenuTable.getInstance();
         initComponents();
-        refreshMenu();
         confirmButton.setVisible(false);
     }
 
@@ -23,28 +23,42 @@ public class RemoveMenuItem extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        removeItemPanel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        itemListTextArea = new javax.swing.JTextArea();
+        newItemLabel = new javax.swing.JLabel();
+        itemNameLabel = new javax.swing.JLabel();
+        priceLabel = new javax.swing.JLabel();
+        itemNameTextField = new javax.swing.JTextField();
+        priceTextField = new javax.swing.JTextField();
         confirmButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        refreshButton = new javax.swing.JButton();
-        removeLabel = new javax.swing.JLabel();
-        removeTextField = new javax.swing.JTextField();
-        validateNameButton = new javax.swing.JButton();
+        validateItemButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
-        removeItemPanel.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        removeItemPanel.setText("Remove a Menu Item");
+        newItemLabel.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        newItemLabel.setText("New Item");
 
-        itemListTextArea.setEditable(false);
-        itemListTextArea.setColumns(20);
-        itemListTextArea.setFont(new java.awt.Font("Segoe WP Light", 0, 18)); // NOI18N
-        itemListTextArea.setRows(5);
-        jScrollPane1.setViewportView(itemListTextArea);
+        itemNameLabel.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        itemNameLabel.setText("Item Name");
+
+        priceLabel.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        priceLabel.setText("Price");
+
+        itemNameTextField.setBackground(new java.awt.Color(240, 240, 240));
+        itemNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearConfirm(evt);
+            }
+        });
+
+        priceTextField.setBackground(new java.awt.Color(240, 240, 240));
+        priceTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearConfirm(evt);
+            }
+        });
 
         confirmButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         confirmButton.setText("Confirm");
@@ -62,29 +76,11 @@ public class RemoveMenuItem extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        validateItemButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        validateItemButton.setText("Validate Item");
+        validateItemButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
-            }
-        });
-
-        removeLabel.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        removeLabel.setText("Remove:");
-
-        removeTextField.setText("Enter Item Name To Remove");
-        removeTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RTFclearText(evt);
-            }
-        });
-
-        validateNameButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        validateNameButton.setText("Validate Item Name");
-        validateNameButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                validateNameButtonActionPerformed(evt);
+                validateItemButtonActionPerformed(evt);
             }
         });
 
@@ -95,42 +91,44 @@ public class RemoveMenuItem extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(validateItemButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(removeItemPanel)
+                        .addComponent(itemNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(itemNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(priceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(removeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeTextField))
-                    .addComponent(validateNameButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(newItemLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(newItemLabel)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(removeItemPanel)
-                    .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(removeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(removeTextField))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validateNameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                    .addComponent(itemNameLabel)
+                    .addComponent(itemNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priceLabel)
+                    .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(validateItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,7 +139,7 @@ public class RemoveMenuItem extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -150,8 +148,8 @@ public class RemoveMenuItem extends javax.swing.JFrame {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
 
-        menuTable.deleteItem(removeTextField.getText());
-        System.out.println("Removed: " + menuTable.getItemData(removeTextField.getText()));
+        menuTable.insertItem(itemNameTextField.getText(), Integer.parseInt(priceTextField.getText()));
+        
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
 
@@ -160,43 +158,48 @@ public class RemoveMenuItem extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+    private void validateItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateItemButtonActionPerformed
         // TODO add your handling code here:
-        refreshMenu();
-    }//GEN-LAST:event_refreshButtonActionPerformed
-
-    private void RTFclearText(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RTFclearText
-        // TODO add your handling code here:
-
-        if (removeTextField.getText().equals("Enter Item Name To Remove")) {
-            removeTextField.setText("");
-        }
-
-        confirmButton.setVisible(false);
-    }//GEN-LAST:event_RTFclearText
-
-    private void validateNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateNameButtonActionPerformed
-        // TODO add your handling code here:
-
-        if (menuTable.isMenuItem(removeTextField.getText())) {
-            confirmButton.setVisible(true);
-        } else {
+                
+        if (itemNameTextField.getText().equals("") && priceTextField.getText().equals("")) {
+            
             confirmButton.setVisible(false);
+        } else {
+            
+            if (isInt(priceTextField.getText())) {
+                confirmButton.setVisible(true);
+            } else {
+                priceTextField.setForeground(Color.red);
+                priceTextField.setText("Must Enter and Integer Value");
+            }
         }
-    }//GEN-LAST:event_validateNameButtonActionPerformed
 
-    public void refreshMenu() {
+    }//GEN-LAST:event_validateItemButtonActionPerformed
+
+    private void clearConfirm(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearConfirm
+        // TODO add your handling code here:
+        priceTextField.setForeground(Color.black);
+        confirmButton.setVisible(false);
         
-        String setMenuList = "";
+        if (priceTextField.getText().equals("Must Enter and Integer Value")) {
+            priceTextField.setText("");
+        }
+    }//GEN-LAST:event_clearConfirm
+
+    public boolean isInt(String s) {
+        boolean isInt = false;
         
-        for (int i = 0; i < menuTable.getAllItems().size(); i++) {
-            setMenuList += (menuTable.getItemData(menuTable.getAllItems().get(i)).get(0) + 
-                    " " + menuTable.getItemData(menuTable.getAllItems().get(i)).get(1) +  "\n");
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isDigit(s.charAt(i))) {
+                isInt = true;
+            } else {
+                isInt = false;
+                return isInt;
+            }
         }
         
-        itemListTextArea.setText(setMenuList);
+        return isInt;
     }
-    
     
     /**
      * @param args the command line arguments
@@ -215,20 +218,21 @@ public class RemoveMenuItem extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RemoveMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RemoveMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RemoveMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RemoveMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RemoveMenuItem().setVisible(true);
+                new AddMenuItemView().setVisible(true);
             }
         });
     }
@@ -236,13 +240,12 @@ public class RemoveMenuItem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton confirmButton;
-    private javax.swing.JTextArea itemListTextArea;
+    private javax.swing.JLabel itemNameLabel;
+    private javax.swing.JTextField itemNameTextField;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton refreshButton;
-    private javax.swing.JLabel removeItemPanel;
-    private javax.swing.JLabel removeLabel;
-    private javax.swing.JTextField removeTextField;
-    private javax.swing.JButton validateNameButton;
+    private javax.swing.JLabel newItemLabel;
+    private javax.swing.JLabel priceLabel;
+    private javax.swing.JTextField priceTextField;
+    private javax.swing.JButton validateItemButton;
     // End of variables declaration//GEN-END:variables
 }

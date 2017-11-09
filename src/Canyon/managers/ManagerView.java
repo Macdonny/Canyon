@@ -1,13 +1,17 @@
 
 package Canyon.managers;
 
+import Canyon.LoginView;
 import Canyon.db.tables.EmployeesTable;
 import Canyon.db.tables.MenuTable;
+import Canyon.employees.ChefView;
 import Canyon.employees.Employee;
+import Canyon.employees.HostView;
+import Canyon.employees.ServerView;
 import Canyon.payroll.PayrollView;
-import Canyon.menu.AddMenuItem;
-import Canyon.menu.EditMenuItem;
-import Canyon.menu.RemoveMenuItem;
+import Canyon.menu.AddMenuItemView;
+import Canyon.menu.EditMenuItemView;
+import Canyon.menu.RemoveMenuItemView;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -90,6 +94,9 @@ public class ManagerView extends javax.swing.JFrame {
         manWebPanel = new javax.swing.JPanel();
         openPayrollButton = new javax.swing.JButton();
         logOffButton = new javax.swing.JButton();
+        openServerViewButton = new javax.swing.JButton();
+        openHostViewButton = new javax.swing.JButton();
+        openChefViewButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manager");
@@ -364,7 +371,7 @@ public class ManagerView extends javax.swing.JFrame {
 
         openPayrollButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         openPayrollButton.setForeground(new java.awt.Color(42, 49, 50));
-        openPayrollButton.setText("Open Payroll");
+        openPayrollButton.setText("Payroll");
         openPayrollButton.setMaximumSize(new java.awt.Dimension(120, 80));
         openPayrollButton.setMinimumSize(new java.awt.Dimension(120, 80));
         openPayrollButton.setPreferredSize(new java.awt.Dimension(120, 80));
@@ -377,7 +384,7 @@ public class ManagerView extends javax.swing.JFrame {
 
         logOffButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         logOffButton.setForeground(new java.awt.Color(42, 49, 50));
-        logOffButton.setText("Log Off");
+        logOffButton.setText("Log Out");
         logOffButton.setMaximumSize(new java.awt.Dimension(120, 80));
         logOffButton.setMinimumSize(new java.awt.Dimension(120, 80));
         logOffButton.setPreferredSize(new java.awt.Dimension(120, 80));
@@ -385,6 +392,27 @@ public class ManagerView extends javax.swing.JFrame {
         logOffButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOffButtonActionPerformed(evt);
+            }
+        });
+
+        openServerViewButton.setText("Server");
+        openServerViewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openServerViewButtonActionPerformed(evt);
+            }
+        });
+
+        openHostViewButton.setText("Host");
+        openHostViewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openHostViewButtonActionPerformed(evt);
+            }
+        });
+
+        openChefViewButton.setText("Chef");
+        openChefViewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openChefViewButtonActionPerformed(evt);
             }
         });
 
@@ -396,8 +424,14 @@ public class ManagerView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(openHostViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(openServerViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(openChefViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
                 .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -413,12 +447,15 @@ public class ManagerView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(629, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8))
+                    .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openHostViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openChefViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openServerViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -455,7 +492,7 @@ public class ManagerView extends javax.swing.JFrame {
     private void empAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empAddButtonActionPerformed
         // TODO add your handling code here:
         
-        AddEmployee aE = new AddEmployee ();
+        AddEmployeeView aE = new AddEmployeeView ();
         aE.setVisible(true);
         try {
             refreshNames();
@@ -478,7 +515,7 @@ public class ManagerView extends javax.swing.JFrame {
     private void empRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empRemoveButtonActionPerformed
         // TODO add your handling code here:
         
-        RemoveEmployee rE = new RemoveEmployee ();
+        RemoveEmployeeView rE = new RemoveEmployeeView ();
         rE.setVisible(true);
         try {
             refreshNames();
@@ -491,7 +528,7 @@ public class ManagerView extends javax.swing.JFrame {
     private void empEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empEditButtonActionPerformed
         // TODO add your handling code here:
         
-        EditEmployee eE = new EditEmployee ();
+        EditEmployeeView eE = new EditEmployeeView ();
         eE.setVisible(true);
         try {
             refreshNames();
@@ -502,11 +539,10 @@ public class ManagerView extends javax.swing.JFrame {
     }//GEN-LAST:event_empEditButtonActionPerformed
 
     private void logOffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOffButtonActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:  
         this.setVisible(false);
-        
-               
+        LoginView loginView = new LoginView();
+        loginView.setVisible(true);
     }//GEN-LAST:event_logOffButtonActionPerformed
 
     private void menuRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRefreshButtonActionPerformed
@@ -517,7 +553,7 @@ public class ManagerView extends javax.swing.JFrame {
     private void menuAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddButtonActionPerformed
         // TODO add your handling code here:
         
-        AddMenuItem aMI = new AddMenuItem ();
+        AddMenuItemView aMI = new AddMenuItemView ();
         aMI.setVisible(true);
         try {
             refreshNames();
@@ -528,24 +564,45 @@ public class ManagerView extends javax.swing.JFrame {
 
     private void menuRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRemoveButtonActionPerformed
         // TODO add your handling code here:
-        RemoveMenuItem rME = new RemoveMenuItem ();
+        RemoveMenuItemView rME = new RemoveMenuItemView ();
         rME.setVisible(true);
         refreshMenu();
     }//GEN-LAST:event_menuRemoveButtonActionPerformed
 
     private void menuEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditButtonActionPerformed
         // TODO add your handling code here:
-        EditMenuItem eMI = new EditMenuItem ();
+        EditMenuItemView eMI = new EditMenuItemView ();
         eMI.setVisible(true);
         refreshMenu();
     }//GEN-LAST:event_menuEditButtonActionPerformed
 
     private void openPayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openPayrollButtonActionPerformed
         // TODO add your handling code here:
-//        this.setVisible(false);
-        PayrollView payrollWindow = new PayrollView();
-        payrollWindow.setVisible(true);
+        this.setVisible(false);
+        PayrollView payrollView = new PayrollView();
+        payrollView.setVisible(true);
     }//GEN-LAST:event_openPayrollButtonActionPerformed
+
+    private void openServerViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openServerViewButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ServerView serverView = new ServerView();
+        serverView.setVisible(true);
+    }//GEN-LAST:event_openServerViewButtonActionPerformed
+
+    private void openHostViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openHostViewButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        HostView hostView = new HostView();
+        hostView.setVisible(true);
+    }//GEN-LAST:event_openHostViewButtonActionPerformed
+
+    private void openChefViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openChefViewButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ChefView chefView = new ChefView();
+        chefView.setVisible(true);
+    }//GEN-LAST:event_openChefViewButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -605,6 +662,9 @@ public class ManagerView extends javax.swing.JFrame {
     private javax.swing.JPanel menuPanel;
     private javax.swing.JButton menuRefreshButton;
     private javax.swing.JButton menuRemoveButton;
+    private javax.swing.JButton openChefViewButton;
+    private javax.swing.JButton openHostViewButton;
     private javax.swing.JButton openPayrollButton;
+    private javax.swing.JButton openServerViewButton;
     // End of variables declaration//GEN-END:variables
 }

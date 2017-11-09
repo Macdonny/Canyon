@@ -1,24 +1,15 @@
-package Canyon.managers;
+package Canyon.menu;
 
-import Canyon.db.tables.EmployeesTable;
-import Canyon.employees.Employee;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Canyon.db.tables.MenuTable;
 
-public class RemoveEmployee extends javax.swing.JFrame {
+public class RemoveMenuItemView extends javax.swing.JFrame {
     
-    EmployeesTable employeesTable;
+    MenuTable menuTable;
 
-    public RemoveEmployee() {
-        employeesTable = EmployeesTable.getInstance();
+    public RemoveMenuItemView() {
+        menuTable = MenuTable.getInstance();
         initComponents();
-        try {
-            refreshNames();
-        } catch (SQLException ex) {
-            Logger.getLogger(RemoveEmployee.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        refreshMenu();
         confirmButton.setVisible(false);
     }
 
@@ -32,9 +23,9 @@ public class RemoveEmployee extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        removeEmpLabel = new javax.swing.JLabel();
+        removeItemPanel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        empListTextArea = new javax.swing.JTextArea();
+        itemListTextArea = new javax.swing.JTextArea();
         confirmButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
@@ -43,19 +34,17 @@ public class RemoveEmployee extends javax.swing.JFrame {
         validateNameButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Employee - Remove");
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
-        removeEmpLabel.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        removeEmpLabel.setText("Remove an Employee");
+        removeItemPanel.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        removeItemPanel.setText("Remove a Menu Item");
 
-        empListTextArea.setEditable(false);
-        empListTextArea.setColumns(20);
-        empListTextArea.setFont(new java.awt.Font("Segoe WP Light", 0, 18)); // NOI18N
-        empListTextArea.setRows(5);
-        jScrollPane1.setViewportView(empListTextArea);
+        itemListTextArea.setEditable(false);
+        itemListTextArea.setColumns(20);
+        itemListTextArea.setFont(new java.awt.Font("Segoe WP Light", 0, 18)); // NOI18N
+        itemListTextArea.setRows(5);
+        jScrollPane1.setViewportView(itemListTextArea);
 
         confirmButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         confirmButton.setText("Confirm");
@@ -84,20 +73,15 @@ public class RemoveEmployee extends javax.swing.JFrame {
         removeLabel.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         removeLabel.setText("Remove:");
 
-        removeTextField.setText("Enter Employee's First Name");
+        removeTextField.setText("Enter Item Name To Remove");
         removeTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                clearText(evt);
-            }
-        });
-        removeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeTextFieldActionPerformed(evt);
+                RTFclearText(evt);
             }
         });
 
         validateNameButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        validateNameButton.setText("Validate Name");
+        validateNameButton.setText("Validate Item Name");
         validateNameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 validateNameButtonActionPerformed(evt);
@@ -113,7 +97,7 @@ public class RemoveEmployee extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(removeEmpLabel)
+                        .addComponent(removeItemPanel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -132,7 +116,7 @@ public class RemoveEmployee extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(removeEmpLabel)
+                    .addComponent(removeItemPanel)
                     .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,8 +150,8 @@ public class RemoveEmployee extends javax.swing.JFrame {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
 
-        employeesTable.RemoveEmployee(removeTextField.getText());
-        System.out.println("Removed: " + employeesTable.ViewEmployee(removeTextField.getText()));
+        menuTable.deleteItem(removeTextField.getText());
+        System.out.println("Removed: " + menuTable.getItemData(removeTextField.getText()));
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
 
@@ -177,53 +161,42 @@ public class RemoveEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-        try {
-            // TODO add your handling code here:
-            refreshNames();
-        } catch (SQLException ex) {
-            Logger.getLogger(RemoveEmployee.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        // TODO add your handling code here:
+        refreshMenu();
     }//GEN-LAST:event_refreshButtonActionPerformed
 
-    private void clearText(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearText
+    private void RTFclearText(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RTFclearText
         // TODO add your handling code here:
-        
-        if (removeTextField.getText().equals("Enter First Name To Remove")) {
+
+        if (removeTextField.getText().equals("Enter Item Name To Remove")) {
             removeTextField.setText("");
         }
-        
+
         confirmButton.setVisible(false);
-    }//GEN-LAST:event_clearText
+    }//GEN-LAST:event_RTFclearText
 
     private void validateNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateNameButtonActionPerformed
         // TODO add your handling code here:
 
-        if (employeesTable.VerifyLogin(removeTextField.getText())) {
+        if (menuTable.isMenuItem(removeTextField.getText())) {
             confirmButton.setVisible(true);
         } else {
             confirmButton.setVisible(false);
         }
-
     }//GEN-LAST:event_validateNameButtonActionPerformed
 
-    private void removeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_removeTextFieldActionPerformed
-
-    public void refreshNames() throws SQLException {
-        String setEmpList = "";
-        ArrayList<Employee> employees = employeesTable.getAllEmployees();
+    public void refreshMenu() {
         
-        for (int i = 0; i < employees.size(); i++) {
-            setEmpList += (employees.get(i).getfName()) + 
-                    " " + (employees.get(i).getlName()) +
-                    " " + (employees.get(i).getUserName()) + 
-                    " " + (employees.get(i).getPosition()) + "\n";
+        String setMenuList = "";
+        
+        for (int i = 0; i < menuTable.getAllItems().size(); i++) {
+            setMenuList += (menuTable.getItemData(menuTable.getAllItems().get(i)).get(0) + 
+                    " " + menuTable.getItemData(menuTable.getAllItems().get(i)).get(1) +  "\n");
         }
         
-        empListTextArea.setText(setEmpList);
+        itemListTextArea.setText(setMenuList);
     }
+    
     
     /**
      * @param args the command line arguments
@@ -242,20 +215,21 @@ public class RemoveEmployee extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RemoveEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoveMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RemoveEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoveMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RemoveEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoveMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RemoveEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoveMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RemoveEmployee().setVisible(true);
+                new RemoveMenuItemView().setVisible(true);
             }
         });
     }
@@ -263,11 +237,11 @@ public class RemoveEmployee extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton confirmButton;
-    private javax.swing.JTextArea empListTextArea;
+    private javax.swing.JTextArea itemListTextArea;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JLabel removeEmpLabel;
+    private javax.swing.JLabel removeItemPanel;
     private javax.swing.JLabel removeLabel;
     private javax.swing.JTextField removeTextField;
     private javax.swing.JButton validateNameButton;

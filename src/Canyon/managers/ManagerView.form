@@ -61,8 +61,14 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="openPayrollButton" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="openHostViewButton" min="-2" pref="120" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="openServerViewButton" min="-2" pref="120" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="openChefViewButton" min="-2" pref="120" max="-2" attributes="0"/>
+                  <EmptySpace pref="335" max="32767" attributes="0"/>
                   <Component id="logOffButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="713" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -85,13 +91,16 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace pref="629" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="logOffButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="openPayrollButton" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="openHostViewButton" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="openChefViewButton" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="openServerViewButton" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -603,7 +612,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="32" green="31" red="2a" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Open Payroll"/>
+            <Property name="text" type="java.lang.String" value="Payroll"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 80]"/>
             </Property>
@@ -629,7 +638,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="32" green="31" red="2a" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Log Off"/>
+            <Property name="text" type="java.lang.String" value="Log Out"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 80]"/>
             </Property>
@@ -645,6 +654,30 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logOffButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="openServerViewButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Server"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openServerViewButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="openHostViewButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Host"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openHostViewButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="openChefViewButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Chef"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openChefViewButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

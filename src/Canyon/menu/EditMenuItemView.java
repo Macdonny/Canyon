@@ -3,11 +3,11 @@ package Canyon.menu;
 import Canyon.db.tables.MenuTable;
 import java.awt.Color;
 
-public class EditMenuItem extends javax.swing.JFrame {
+public class EditMenuItemView extends javax.swing.JFrame {
 
     MenuTable menuTable;
 
-    public EditMenuItem() {
+    public EditMenuItemView() {
         menuTable = MenuTable.getInstance();
         initComponents();
         addPanel.setVisible(false);
@@ -348,20 +348,21 @@ public class EditMenuItem extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditMenuItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditMenuItemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditMenuItem().setVisible(true);
+                new EditMenuItemView().setVisible(true);
             }
         });
     }

@@ -6,6 +6,9 @@ screen as an option (or just the normal table display), and a host and server
 would not see the manager options.
  */
 import Canyon.db.tables.EmployeesTable;
+import Canyon.employees.ChefView;
+import Canyon.employees.HostView;
+import Canyon.employees.ServerView;
 import Canyon.managers.ManagerView;
 import java.util.ArrayList;
 
@@ -202,16 +205,33 @@ public class LoginView extends javax.swing.JFrame {
                 invalidText.setVisible(false);
                 
                 // If the user is a manager, load the manager window
-                if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 1) {
-                    System.out.println("Manager Login");
-                    ManagerView mW = new ManagerView();
-                    mW.setVisible(true);
-                } else if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 2) {
-                    System.out.println("Server Login");
-                    // Server JFrame would now open
-                    //ADD: If Chef
-                    //ADD: If Host
-                    // Need to create Host and Chef JFrames
+                switch (Integer.parseInt(employeesTable.ViewEmployee(username).get(4))) {
+                    case 1:
+                        System.out.println("Manager Login");
+                        this.setVisible(false);
+                        ManagerView managerView = new ManagerView();
+                        managerView.setVisible(login);
+                        break;
+                    case 2:
+                        System.out.println("Server Login");
+                        this.setVisible(false);
+                        ServerView serverView = new ServerView();
+                        serverView.setVisible(login);
+                        break;
+                    case 3:
+                        System.out.println("Host Login");
+                        this.setVisible(false);
+                        HostView hostView = new HostView();
+                        hostView.setVisible(login);
+                        break;
+                    case 4:
+                        System.out.println("Chef Login");
+                        this.setVisible(false);
+                        ChefView chefView = new ChefView();
+                        chefView.setVisible(login);
+                        break;
+                    default:
+                        break;
                 }
             } else {
                 invalidText.setText("Invalid Username or Password combination");
@@ -250,41 +270,56 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
         passField.setText("********");
     }//GEN-LAST:event_passFieldMouseEntered
-
+    // This method causes an extra login
     private void LoginActionViaClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginActionViaClick
         // TODO add your handling code here:
          // This is the same code as above. The above code I think would be for
         // when a user hits the return key, and this code is for clicking the button.
-         String username =  userField.getText();
-        String password =  passField.getText();
-        
-        System.out.println(employeesTable.ViewEmployee("1"));
-
-        // Checks to see if the username is in database
-        if (employeesTable.VerifyLogin(username)) {
-            if (password.equals(employeesTable.ViewEmployee(username).get(3))) {
-                this.login = true;
-                invalidText.setVisible(false);
-                
-                // If the user is a manager, load the manager window
-                if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 1) {
-                    System.out.println("Manager Login");
-                    ManagerView mW = new ManagerView();
-                    mW.setVisible(true);
-                } else if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 2) {
-                    System.out.println("Server Login");
-                    // Server JFrame would now open
-                    // Need to create Host and Chef JFrames
-                }
-            } else {
-                invalidText.setText("Invalid Username - Password combination");
-                invalidText.setVisible(true);
-            }
-            setVisible(false);
-        } else {
-            invalidText.setText("Username not found");
-            invalidText.setVisible(true);
-        }
+//         String username =  userField.getText();
+//        String password =  passField.getText();
+//        
+//        System.out.println(employeesTable.ViewEmployee("1"));
+//
+//        // Checks to see if the username is in database
+//        if (employeesTable.VerifyLogin(username)) {
+//            if (password.equals(employeesTable.ViewEmployee(username).get(3))) {
+//                this.login = true;
+//                invalidText.setVisible(false);
+//                
+//                // If the user is a manager, load the manager window
+//                switch (Integer.parseInt(employeesTable.ViewEmployee(username).get(4))) {
+//                    case 1:
+//                        System.out.println("Manager Login");
+//                        ManagerView mW = new ManagerView();
+//                        mW.setVisible(true);
+//                        break;
+//                    case 2:
+//                        System.out.println("Server Login");
+//                        ServerView serverView = new ServerView();
+//                        serverView.setVisible(login);
+//                        break;
+//                    case 3:
+//                        System.out.println("Host Login");
+//                        HostView hostView = new HostView();
+//                        hostView.setVisible(login);
+//                        break;
+//                    case 4:
+//                        System.out.println("Chef Login");
+//                        ChefView chefView = new ChefView();
+//                        chefView.setVisible(login);
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            } else {
+//                invalidText.setText("Invalid Username - Password combination");
+//                invalidText.setVisible(true);
+//            }
+//            setVisible(false);
+//        } else {
+//            invalidText.setText("Username not found");
+//            invalidText.setVisible(true);
+//        }
                            
     }//GEN-LAST:event_LoginActionViaClick
 
