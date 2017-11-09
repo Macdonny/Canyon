@@ -352,7 +352,7 @@ public class ManagerView extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(menuControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, Short.MAX_VALUE)
+                .addComponent(menuControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -395,6 +395,7 @@ public class ManagerView extends javax.swing.JFrame {
             }
         });
 
+        openServerViewButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         openServerViewButton.setText("Server");
         openServerViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,6 +403,7 @@ public class ManagerView extends javax.swing.JFrame {
             }
         });
 
+        openHostViewButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         openHostViewButton.setText("Host");
         openHostViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,6 +411,7 @@ public class ManagerView extends javax.swing.JFrame {
             }
         });
 
+        openChefViewButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         openChefViewButton.setText("Chef");
         openChefViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -448,7 +451,7 @@ public class ManagerView extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(629, Short.MAX_VALUE)
+                .addContainerGap(630, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -592,16 +595,16 @@ public class ManagerView extends javax.swing.JFrame {
 
     private void openHostViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openHostViewButtonActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        HostView hostView = new HostView();
-        hostView.setVisible(true);
+//        this.setVisible(false);
+//        HostView hostView = new HostView();
+//        hostView.setVisible(true);
     }//GEN-LAST:event_openHostViewButtonActionPerformed
 
     private void openChefViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openChefViewButtonActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        ChefView chefView = new ChefView();
-        chefView.setVisible(true);
+//        this.setVisible(false);
+//        ChefView chefView = new ChefView();
+//        chefView.setVisible(true);
     }//GEN-LAST:event_openChefViewButtonActionPerformed
 
     /**

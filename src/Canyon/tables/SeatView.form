@@ -160,7 +160,7 @@
                               <Component id="seat5Button" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="seat6Button" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -198,6 +198,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="24" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Table"/>
               </Properties>
             </Component>
@@ -205,6 +208,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="tableButton">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Table"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[635, 445]"/>
@@ -222,6 +228,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat1Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 1"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>
@@ -242,6 +251,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat2Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 2"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>
@@ -262,6 +274,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat3Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 3"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>
@@ -282,6 +297,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat4Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 4"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>
@@ -302,6 +320,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat5Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 5"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>
@@ -322,6 +343,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat6Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 6"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>
@@ -342,6 +366,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat7Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 7"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>
@@ -362,6 +389,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat8Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 8"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>
@@ -382,6 +412,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="seat9Button">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Seat 9"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[120, 100]"/>

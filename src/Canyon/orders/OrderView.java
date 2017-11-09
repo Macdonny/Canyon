@@ -55,6 +55,7 @@ public class OrderView extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(960, 700));
         jPanel1.setSize(new java.awt.Dimension(960, 700));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Order");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -70,7 +71,7 @@ public class OrderView extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -78,48 +79,56 @@ public class OrderView extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton1.setText("Appetizers");
         jButton1.setMaximumSize(new java.awt.Dimension(300, 125));
         jButton1.setMinimumSize(new java.awt.Dimension(300, 125));
         jButton1.setPreferredSize(new java.awt.Dimension(300, 125));
         jButton1.setSize(new java.awt.Dimension(300, 125));
 
+        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton2.setText("Entrees");
         jButton2.setMaximumSize(new java.awt.Dimension(300, 125));
         jButton2.setMinimumSize(new java.awt.Dimension(300, 125));
         jButton2.setPreferredSize(new java.awt.Dimension(300, 125));
         jButton2.setSize(new java.awt.Dimension(300, 125));
 
+        jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton3.setText("Side Items");
         jButton3.setMaximumSize(new java.awt.Dimension(300, 125));
         jButton3.setMinimumSize(new java.awt.Dimension(300, 125));
         jButton3.setPreferredSize(new java.awt.Dimension(300, 125));
         jButton3.setSize(new java.awt.Dimension(300, 125));
 
+        jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton4.setText("Desserts");
         jButton4.setMaximumSize(new java.awt.Dimension(300, 125));
         jButton4.setMinimumSize(new java.awt.Dimension(300, 125));
         jButton4.setPreferredSize(new java.awt.Dimension(300, 125));
         jButton4.setSize(new java.awt.Dimension(300, 125));
 
+        jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton5.setText("Liquor");
         jButton5.setMaximumSize(new java.awt.Dimension(300, 125));
         jButton5.setMinimumSize(new java.awt.Dimension(300, 125));
         jButton5.setPreferredSize(new java.awt.Dimension(300, 125));
         jButton5.setSize(new java.awt.Dimension(300, 125));
 
+        jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton6.setText("Beer");
         jButton6.setMaximumSize(new java.awt.Dimension(300, 125));
         jButton6.setMinimumSize(new java.awt.Dimension(300, 125));
         jButton6.setPreferredSize(new java.awt.Dimension(300, 125));
         jButton6.setSize(new java.awt.Dimension(300, 125));
 
+        jButton7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton7.setText("Wine");
         jButton7.setMaximumSize(new java.awt.Dimension(300, 125));
         jButton7.setMinimumSize(new java.awt.Dimension(300, 125));
         jButton7.setPreferredSize(new java.awt.Dimension(300, 125));
         jButton7.setSize(new java.awt.Dimension(300, 125));
 
+        jButton8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton8.setText("Mixed Drinks");
         jButton8.setMaximumSize(new java.awt.Dimension(300, 125));
         jButton8.setMinimumSize(new java.awt.Dimension(300, 125));
@@ -174,15 +183,15 @@ public class OrderView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)

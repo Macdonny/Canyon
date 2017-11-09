@@ -57,6 +57,7 @@ public class SeatView extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(960, 700));
         jPanel1.setSize(new java.awt.Dimension(960, 700));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Table");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -76,12 +77,14 @@ public class SeatView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tableButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         tableButton.setText("Table");
         tableButton.setMaximumSize(new java.awt.Dimension(635, 445));
         tableButton.setMinimumSize(new java.awt.Dimension(635, 445));
         tableButton.setPreferredSize(new java.awt.Dimension(635, 445));
         tableButton.setSize(new java.awt.Dimension(635, 445));
 
+        seat1Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat1Button.setText("Seat 1");
         seat1Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat1Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -93,6 +96,7 @@ public class SeatView extends javax.swing.JFrame {
             }
         });
 
+        seat2Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat2Button.setText("Seat 2");
         seat2Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat2Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -104,6 +108,7 @@ public class SeatView extends javax.swing.JFrame {
             }
         });
 
+        seat3Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat3Button.setText("Seat 3");
         seat3Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat3Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -115,6 +120,7 @@ public class SeatView extends javax.swing.JFrame {
             }
         });
 
+        seat4Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat4Button.setText("Seat 4");
         seat4Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat4Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -126,6 +132,7 @@ public class SeatView extends javax.swing.JFrame {
             }
         });
 
+        seat5Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat5Button.setText("Seat 5");
         seat5Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat5Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -137,6 +144,7 @@ public class SeatView extends javax.swing.JFrame {
             }
         });
 
+        seat6Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat6Button.setText("Seat 6");
         seat6Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat6Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -148,6 +156,7 @@ public class SeatView extends javax.swing.JFrame {
             }
         });
 
+        seat7Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat7Button.setText("Seat 7");
         seat7Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat7Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -159,6 +168,7 @@ public class SeatView extends javax.swing.JFrame {
             }
         });
 
+        seat8Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat8Button.setText("Seat 8");
         seat8Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat8Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -170,6 +180,7 @@ public class SeatView extends javax.swing.JFrame {
             }
         });
 
+        seat9Button.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         seat9Button.setText("Seat 9");
         seat9Button.setMaximumSize(new java.awt.Dimension(120, 100));
         seat9Button.setMinimumSize(new java.awt.Dimension(120, 100));
@@ -257,7 +268,7 @@ public class SeatView extends javax.swing.JFrame {
                             .addComponent(seat4Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(seat5Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(seat6Button, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(37, Short.MAX_VALUE))
+                        .addContainerGap(25, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)

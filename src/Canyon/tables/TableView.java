@@ -63,6 +63,7 @@ public class TableView extends javax.swing.JFrame {
         jPanel1.setSize(new java.awt.Dimension(960, 700));
 
         table1Button.setBackground(new java.awt.Color(153, 255, 153));
+        table1Button.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         table1Button.setText("Table 1");
         table1Button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(42, 49, 50), 3, true));
         table1Button.setOpaque(true);
@@ -73,6 +74,7 @@ public class TableView extends javax.swing.JFrame {
         });
 
         table2Button.setBackground(new java.awt.Color(153, 255, 153));
+        table2Button.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         table2Button.setText("Table 2");
         table2Button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(42, 49, 50), 3, true));
         table2Button.setOpaque(true);
@@ -83,6 +85,7 @@ public class TableView extends javax.swing.JFrame {
         });
 
         table3Button.setBackground(new java.awt.Color(153, 255, 153));
+        table3Button.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         table3Button.setText("Table 3");
         table3Button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(42, 49, 50), 3, true));
         table3Button.setOpaque(true);
@@ -93,6 +96,7 @@ public class TableView extends javax.swing.JFrame {
         });
 
         table4Button.setBackground(new java.awt.Color(153, 255, 153));
+        table4Button.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         table4Button.setText("Table 4");
         table4Button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(42, 49, 50), 3, true));
         table4Button.setOpaque(true);
@@ -103,6 +107,7 @@ public class TableView extends javax.swing.JFrame {
         });
 
         table5Button.setBackground(new java.awt.Color(153, 255, 153));
+        table5Button.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         table5Button.setText("Table 5");
         table5Button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(42, 49, 50), 3, true));
         table5Button.setOpaque(true);
@@ -113,6 +118,7 @@ public class TableView extends javax.swing.JFrame {
         });
 
         table6Button.setBackground(new java.awt.Color(153, 255, 153));
+        table6Button.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         table6Button.setText("Table 6");
         table6Button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(42, 49, 50), 3, true));
         table6Button.setOpaque(true);
@@ -123,6 +129,7 @@ public class TableView extends javax.swing.JFrame {
         });
 
         table7Button.setBackground(new java.awt.Color(153, 255, 153));
+        table7Button.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         table7Button.setText("Table 7");
         table7Button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(42, 49, 50), 3, true));
         table7Button.setOpaque(true);
@@ -133,6 +140,7 @@ public class TableView extends javax.swing.JFrame {
         });
 
         table8Button.setBackground(new java.awt.Color(153, 255, 153));
+        table8Button.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         table8Button.setText("Table 8");
         table8Button.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(42, 49, 50), 3, true));
         table8Button.setOpaque(true);
@@ -142,6 +150,7 @@ public class TableView extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Tables");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -214,7 +223,7 @@ public class TableView extends javax.swing.JFrame {
                     .addComponent(table6Button, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(table7Button, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(table8Button, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
