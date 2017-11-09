@@ -21,7 +21,7 @@ public class CanyonMain {
         } catch (SQLException ex) {
             Logger.getLogger(CanyonMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Login loginView = new Login();
+        LoginView loginView = new LoginView();
         loginView.setVisible(true);
     }
 }

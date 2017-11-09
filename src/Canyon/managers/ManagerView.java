@@ -4,7 +4,7 @@ package Canyon.managers;
 import Canyon.db.tables.EmployeesTable;
 import Canyon.db.tables.MenuTable;
 import Canyon.employees.Employee;
-import Canyon.payroll.Payroll;
+import Canyon.payroll.PayrollView;
 import Canyon.menu.AddMenuItem;
 import Canyon.menu.EditMenuItem;
 import Canyon.menu.RemoveMenuItem;
@@ -14,12 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ManagerWindow extends javax.swing.JFrame {
+public class ManagerView extends javax.swing.JFrame {
     
     EmployeesTable employeesTable;
     MenuTable menuTable;
 
-    public ManagerWindow() {
+    public ManagerView() {
         employeesTable = EmployeesTable.getInstance();
         menuTable = MenuTable.getInstance();
         initComponents();
@@ -27,7 +27,7 @@ public class ManagerWindow extends javax.swing.JFrame {
         try {
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerView.class.getName()).log(Level.SEVERE, null, ex);
         }
         refreshMenu();
     }
@@ -460,7 +460,7 @@ public class ManagerWindow extends javax.swing.JFrame {
         try {
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_empAddButtonActionPerformed
@@ -470,7 +470,7 @@ public class ManagerWindow extends javax.swing.JFrame {
             // TODO add your handling code here:
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_empRefreshButtonActionPerformed
@@ -483,7 +483,7 @@ public class ManagerWindow extends javax.swing.JFrame {
         try {
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_empRemoveButtonActionPerformed
@@ -496,7 +496,7 @@ public class ManagerWindow extends javax.swing.JFrame {
         try {
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerView.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_empEditButtonActionPerformed
@@ -522,7 +522,7 @@ public class ManagerWindow extends javax.swing.JFrame {
         try {
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(ManagerWindow.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagerView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuAddButtonActionPerformed
 
@@ -543,7 +543,7 @@ public class ManagerWindow extends javax.swing.JFrame {
     private void openPayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openPayrollButtonActionPerformed
         // TODO add your handling code here:
 //        this.setVisible(false);
-        Payroll payrollWindow = new Payroll();
+        PayrollView payrollWindow = new PayrollView();
         payrollWindow.setVisible(true);
     }//GEN-LAST:event_openPayrollButtonActionPerformed
 
@@ -564,20 +564,21 @@ public class ManagerWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManagerWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManagerWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManagerWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManagerWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagerWindow().setVisible(true);
+                new ManagerView().setVisible(true);
             }
         });
     }

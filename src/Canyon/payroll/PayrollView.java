@@ -17,7 +17,7 @@ import javax.swing.DefaultListModel;
  *
  * @author macdonny
  */
-public class Payroll extends javax.swing.JFrame {
+public class PayrollView extends javax.swing.JFrame {
     
     EmployeesTable employeesTable;
     PayrollTable payrollTable;
@@ -28,13 +28,13 @@ public class Payroll extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public Payroll() {
+    public PayrollView() {
         employeesTable = EmployeesTable.getInstance();
         payrollTable = PayrollTable.getInstance();
         try {
             refreshNames();
         } catch (SQLException ex) {
-            Logger.getLogger(Payroll.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PayrollView.class.getName()).log(Level.SEVERE, null, ex);
         }
         initComponents();
         this.setLocationRelativeTo(null);
@@ -245,14 +245,18 @@ public class Payroll extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Payroll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayrollView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Payroll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayrollView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Payroll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayrollView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Payroll.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayrollView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -261,7 +265,7 @@ public class Payroll extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Payroll().setVisible(true);
+                new PayrollView().setVisible(true);
             }
         });
     }

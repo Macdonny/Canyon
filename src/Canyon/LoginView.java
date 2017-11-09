@@ -6,15 +6,15 @@ screen as an option (or just the normal table display), and a host and server
 would not see the manager options.
  */
 import Canyon.db.tables.EmployeesTable;
-import Canyon.managers.ManagerWindow;
+import Canyon.managers.ManagerView;
 import java.util.ArrayList;
 
-public class Login extends javax.swing.JFrame {
+public class LoginView extends javax.swing.JFrame {
     
     EmployeesTable employeesTable;
     boolean login = false;
       
-    public Login() {
+    public LoginView() {
         employeesTable = EmployeesTable.getInstance();
         initComponents();
         this.setLocationRelativeTo(null);
@@ -204,7 +204,7 @@ public class Login extends javax.swing.JFrame {
                 // If the user is a manager, load the manager window
                 if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 1) {
                     System.out.println("Manager Login");
-                    ManagerWindow mW = new ManagerWindow();
+                    ManagerView mW = new ManagerView();
                     mW.setVisible(true);
                 } else if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 2) {
                     System.out.println("Server Login");
@@ -269,7 +269,7 @@ public class Login extends javax.swing.JFrame {
                 // If the user is a manager, load the manager window
                 if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 1) {
                     System.out.println("Manager Login");
-                    ManagerWindow mW = new ManagerWindow();
+                    ManagerView mW = new ManagerView();
                     mW.setVisible(true);
                 } else if (Integer.parseInt(employeesTable.ViewEmployee(username).get(4)) == 2) {
                     System.out.println("Server Login");
@@ -305,20 +305,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });  
     }
