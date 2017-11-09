@@ -46,7 +46,6 @@ public class ServerView extends javax.swing.JFrame {
         logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(960, 700));
         setMinimumSize(new java.awt.Dimension(960, 700));
         setUndecorated(true);
 
