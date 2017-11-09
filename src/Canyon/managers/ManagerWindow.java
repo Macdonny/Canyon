@@ -106,6 +106,8 @@ public class ManagerWindow extends javax.swing.JFrame {
         empControlPanel.setMaximumSize(new java.awt.Dimension(431, 90));
         empControlPanel.setMinimumSize(new java.awt.Dimension(431, 90));
 
+        empRemoveButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        empRemoveButton.setForeground(new java.awt.Color(42, 49, 50));
         empRemoveButton.setText("Remove");
         empRemoveButton.setMaximumSize(new java.awt.Dimension(100, 80));
         empRemoveButton.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -115,6 +117,8 @@ public class ManagerWindow extends javax.swing.JFrame {
             }
         });
 
+        empEditButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        empEditButton.setForeground(new java.awt.Color(42, 49, 50));
         empEditButton.setText("Edit");
         empEditButton.setMaximumSize(new java.awt.Dimension(100, 80));
         empEditButton.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -124,6 +128,8 @@ public class ManagerWindow extends javax.swing.JFrame {
             }
         });
 
+        empAddButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        empAddButton.setForeground(new java.awt.Color(42, 49, 50));
         empAddButton.setText("Add");
         empAddButton.setMaximumSize(new java.awt.Dimension(100, 80));
         empAddButton.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -133,7 +139,8 @@ public class ManagerWindow extends javax.swing.JFrame {
             }
         });
 
-        empRefreshButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        empRefreshButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        empRefreshButton.setForeground(new java.awt.Color(42, 49, 50));
         empRefreshButton.setText("Refresh");
         empRefreshButton.setMaximumSize(new java.awt.Dimension(100, 80));
         empRefreshButton.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -164,14 +171,14 @@ public class ManagerWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, empControlPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(empControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(empEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(empEditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(empAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(empRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(empRefreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3))
         );
 
-        empLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        empLabel.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         empLabel.setForeground(new java.awt.Color(144, 175, 197));
         empLabel.setText("Employees");
 
@@ -181,7 +188,8 @@ public class ManagerWindow extends javax.swing.JFrame {
 
         empListTextArea.setEditable(false);
         empListTextArea.setColumns(20);
-        empListTextArea.setFont(new java.awt.Font("Segoe WP Light", 0, 18)); // NOI18N
+        empListTextArea.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        empListTextArea.setForeground(new java.awt.Color(42, 49, 50));
         empListTextArea.setRows(5);
         empListTextArea.setMaximumSize(new java.awt.Dimension(430, 400));
         empListTextArea.setMinimumSize(new java.awt.Dimension(430, 400));
@@ -196,18 +204,18 @@ public class ManagerWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(employeePanelLayout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(empLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(empControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(employeePanelLayout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addComponent(empLabel)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         employeePanelLayout.setVerticalGroup(
             employeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeePanelLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(empLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE)
+                .addComponent(empLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -221,14 +229,16 @@ public class ManagerWindow extends javax.swing.JFrame {
         menuPanel.setPreferredSize(new java.awt.Dimension(443, 554));
 
         menuLabel.setBackground(new java.awt.Color(102, 102, 102));
-        menuLabel.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        menuLabel.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         menuLabel.setForeground(new java.awt.Color(144, 175, 197));
-        menuLabel.setText("Menu");
+        menuLabel.setText("Menu Items");
 
         menuControlPanel.setMaximumSize(new java.awt.Dimension(431, 90));
         menuControlPanel.setMinimumSize(new java.awt.Dimension(431, 90));
         menuControlPanel.setPreferredSize(new java.awt.Dimension(431, 90));
 
+        menuRemoveButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menuRemoveButton.setForeground(new java.awt.Color(42, 49, 50));
         menuRemoveButton.setText("Remove");
         menuRemoveButton.setMaximumSize(new java.awt.Dimension(100, 80));
         menuRemoveButton.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -239,6 +249,8 @@ public class ManagerWindow extends javax.swing.JFrame {
             }
         });
 
+        menuEditButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menuEditButton.setForeground(new java.awt.Color(42, 49, 50));
         menuEditButton.setText("Edit");
         menuEditButton.setMaximumSize(new java.awt.Dimension(100, 80));
         menuEditButton.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -249,6 +261,8 @@ public class ManagerWindow extends javax.swing.JFrame {
             }
         });
 
+        menuAddButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menuAddButton.setForeground(new java.awt.Color(42, 49, 50));
         menuAddButton.setText("Add");
         menuAddButton.setMaximumSize(new java.awt.Dimension(100, 80));
         menuAddButton.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -259,6 +273,8 @@ public class ManagerWindow extends javax.swing.JFrame {
             }
         });
 
+        menuRefreshButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        menuRefreshButton.setForeground(new java.awt.Color(42, 49, 50));
         menuRefreshButton.setText("Refresh");
         menuRefreshButton.setMaximumSize(new java.awt.Dimension(100, 80));
         menuRefreshButton.setMinimumSize(new java.awt.Dimension(100, 80));
@@ -274,9 +290,9 @@ public class ManagerWindow extends javax.swing.JFrame {
         menuControlPanelLayout.setHorizontalGroup(
             menuControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuControlPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(menuRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(menuEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(menuAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,12 +309,13 @@ public class ManagerWindow extends javax.swing.JFrame {
                     .addComponent(menuEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(menuAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(menuRefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(2, 2, 2))
         );
 
         menuListTextArea.setEditable(false);
         menuListTextArea.setColumns(20);
-        menuListTextArea.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        menuListTextArea.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        menuListTextArea.setForeground(new java.awt.Color(42, 49, 50));
         menuListTextArea.setRows(5);
         menuListTextArea.setMaximumSize(new java.awt.Dimension(430, 400));
         menuListTextArea.setMinimumSize(new java.awt.Dimension(430, 400));
@@ -310,26 +327,25 @@ public class ManagerWindow extends javax.swing.JFrame {
         menuPanelLayout.setHorizontalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addGap(175, 175, 175)
+                .addComponent(menuLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                        .addComponent(menuLabel)
-                        .addGap(212, 212, 212))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
-                            .addComponent(menuControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
-                        .addContainerGap())))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addComponent(menuControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
+                .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(menuLabel)
                 .addGap(14, 14, 14)
-                .addComponent(menuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(menuControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menuControlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -346,14 +362,26 @@ public class ManagerWindow extends javax.swing.JFrame {
             .addGap(0, 129, Short.MAX_VALUE)
         );
 
+        openPayrollButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        openPayrollButton.setForeground(new java.awt.Color(42, 49, 50));
         openPayrollButton.setText("Open Payroll");
+        openPayrollButton.setMaximumSize(new java.awt.Dimension(120, 80));
+        openPayrollButton.setMinimumSize(new java.awt.Dimension(120, 80));
+        openPayrollButton.setPreferredSize(new java.awt.Dimension(120, 80));
+        openPayrollButton.setSize(new java.awt.Dimension(120, 80));
         openPayrollButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openPayrollButtonActionPerformed(evt);
             }
         });
 
+        logOffButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        logOffButton.setForeground(new java.awt.Color(42, 49, 50));
         logOffButton.setText("Log Off");
+        logOffButton.setMaximumSize(new java.awt.Dimension(120, 80));
+        logOffButton.setMinimumSize(new java.awt.Dimension(120, 80));
+        logOffButton.setPreferredSize(new java.awt.Dimension(120, 80));
+        logOffButton.setSize(new java.awt.Dimension(120, 80));
         logOffButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOffButtonActionPerformed(evt);
@@ -364,19 +392,20 @@ public class ManagerWindow extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 965, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(713, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(0, 0, Short.MAX_VALUE)
                             .addComponent(manWebPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(1, 1, 1)
+                            .addGap(7, 7, 7)
                             .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)))
@@ -384,21 +413,22 @@ public class ManagerWindow extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 716, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(629, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(manWebPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(openPayrollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(logOffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(1, 1, 1)
+                            .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
+                        .addComponent(employeePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 13, Short.MAX_VALUE)
+                    .addComponent(manWebPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
