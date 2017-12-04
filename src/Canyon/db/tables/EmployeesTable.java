@@ -45,7 +45,12 @@ public class EmployeesTable {
         }
         catch(SQLException sql) {
             System.out.println(sql.getMessage());
-        } 
+        }
+        
+        AddEmployee("manager", "manager", "manager", "password", 1);
+        AddEmployee("server", "server", "server", "password", 2);
+        AddEmployee("host", "host", "host", "password", 3);
+        AddEmployee("chef", "chef", "chef", "password", 4);
     }
     
     // View all Employee records -- used by Login JFrame and Manager
@@ -83,26 +88,33 @@ public class EmployeesTable {
     }
     
     // View an Employee record.
-    public ArrayList<String> ViewEmployee(String username){
-        ArrayList<String> list = new ArrayList();
+    public ArrayList<Employee> ViewEmployee(String username){
+        ArrayList<Employee> employees = new ArrayList();
+        String sql = "Select * from Employee where username = ?";
+        ResultSet query = null;
         
         try{
-            PreparedStatement prep = conn.prepareStatement("Select * from Employee where username = ?");
+            PreparedStatement prep = conn.prepareStatement(sql);
             prep.setString(1, username);
-            ResultSet query = prep.executeQuery();
-            query.next();
-
+            query = prep.executeQuery();
             // This, ideally, is supposed to loop over the table to get employee data.
             // I think this may be causing my cursor error, but I'm, not sure.
-            for(int i = 1; i < 6; i++){ 
-                list.add(query.getString(i));
+            
+            while(query.next()) {
+                Employee employee = new Employee();
+                employee.setfName(query.getString("fname"));
+                employee.setlName(query.getString("lname"));
+                employee.setUserName(query.getString("username"));
+                employee.setPassword(query.getString("password"));
+                employee.setPosition(query.getInt("position"));
+                employees.add(employee);
             }
 
         }
-        catch(SQLException sql) {
-            System.out.println(sql.getMessage());
+        catch(SQLException e) {
+            System.out.println(e.getMessage());
         }
-        return list; 
+        return employees; 
     }
     
     // Add a new Employee record to the DB.

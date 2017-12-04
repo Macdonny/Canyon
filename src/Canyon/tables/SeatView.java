@@ -6,6 +6,7 @@
 package Canyon.tables;
 
 import Canyon.employees.ServerView;
+import Canyon.orders.Order;
 import Canyon.orders.OrderView;
 
 /**
@@ -13,10 +14,18 @@ import Canyon.orders.OrderView;
  * @author macdonny
  */
 public class SeatView extends javax.swing.JFrame {
+    
+    Order seatOrder;
 
     /**
      * Creates new form SeatView
      */
+    public SeatView(Order order) {
+        seatOrder = order;
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
     public SeatView() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -301,72 +310,81 @@ public class SeatView extends javax.swing.JFrame {
 
     private void seat1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat1ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("1");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat1ButtonActionPerformed
 
     private void seat2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat2ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("2");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat2ButtonActionPerformed
 
     private void seat3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat3ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("3");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat3ButtonActionPerformed
 
     private void seat4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat4ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("4");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat4ButtonActionPerformed
 
     private void seat5ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat5ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("5");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat5ButtonActionPerformed
 
     private void seat6ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat6ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("6");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat6ButtonActionPerformed
 
     private void seat9ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat9ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("7");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat9ButtonActionPerformed
 
     private void seat8ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat8ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("8");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat8ButtonActionPerformed
 
     private void seat7ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seat7ButtonActionPerformed
         // TODO add your handling code here:
+        seatOrder.setSeat("7");
         this.setVisible(false);
-        OrderView orderView = new OrderView();
+        OrderView orderView = new OrderView(seatOrder);
         orderView.setVisible(true);
     }//GEN-LAST:event_seat7ButtonActionPerformed
 
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        ServerView serverView = new ServerView();
-        serverView.setVisible(true);
+        TableView tableView = new TableView();
+        tableView.setVisible(true);
     }//GEN-LAST:event_previousButtonActionPerformed
 
     /**

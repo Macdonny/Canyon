@@ -2,6 +2,7 @@
 package Canyon.managers;
 
 import Canyon.db.tables.EmployeesTable;
+import Canyon.db.tables.PayrollTable;
 import Canyon.employees.Employee;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,9 +12,12 @@ import java.util.logging.Logger;
 public class EditEmployeeView extends javax.swing.JFrame {
     
     EmployeesTable employeesTable;
+    PayrollTable payrollTable;
     
     public EditEmployeeView() {
         employeesTable = EmployeesTable.getInstance();
+        payrollTable = PayrollTable.getInstance();
+        
         initComponents();
         addPanel.setVisible(false);
         try {
@@ -54,6 +58,10 @@ public class EditEmployeeView extends javax.swing.JFrame {
         getUNPWButton = new javax.swing.JButton();
         confirmButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Employee - Edit");
@@ -191,6 +199,16 @@ public class EditEmployeeView extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Hours");
+
+        jLabel2.setText("Hourly");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout addPanelLayout = new javax.swing.GroupLayout(addPanel);
         addPanel.setLayout(addPanelLayout);
         addPanelLayout.setHorizontalGroup(
@@ -211,6 +229,11 @@ public class EditEmployeeView extends javax.swing.JFrame {
                         .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(addPanelLayout.createSequentialGroup()
+                        .addComponent(empLevelLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(empLevelComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPanelLayout.createSequentialGroup()
                         .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordLabel)
@@ -221,10 +244,13 @@ public class EditEmployeeView extends javax.swing.JFrame {
                             .addComponent(newPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(145, 145, 145))
                     .addGroup(addPanelLayout.createSequentialGroup()
-                        .addComponent(empLevelLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(empLevelComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField1))))
                 .addContainerGap())
         );
         addPanelLayout.setVerticalGroup(
@@ -238,7 +264,15 @@ public class EditEmployeeView extends javax.swing.JFrame {
                 .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lastNameLabel)
                     .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
                     .addComponent(newUsernameLabel))
@@ -250,7 +284,7 @@ public class EditEmployeeView extends javax.swing.JFrame {
                 .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(empLevelLabel)
                     .addComponent(empLevelComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(getUNPWButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -271,7 +305,8 @@ public class EditEmployeeView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(removePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(addPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -320,8 +355,18 @@ public class EditEmployeeView extends javax.swing.JFrame {
             addPanel.setVisible(false);
         }
         
-        firstNameTextField.setText(employeesTable.ViewEmployee(editTextField.getText()).get(0));
-        lastNameTextField.setText(employeesTable.ViewEmployee(editTextField.getText()).get(1));
+        ArrayList<Employee> employee = new ArrayList();
+        employee = employeesTable.ViewEmployee(editTextField.getText());
+        
+        firstNameTextField.setText(employee.get(0).getfName());
+        lastNameTextField.setText(employee.get(0).getlName());
+        
+        ArrayList<String> pr = new ArrayList();
+        pr = payrollTable.getEmployeePayrollInfo(editTextField.getText());
+        
+        jTextField1.setText(pr.get(1));
+        jTextField2.setText(pr.get(2));
+        
         confirmButton.setVisible(false);
         
         
@@ -366,6 +411,10 @@ public class EditEmployeeView extends javax.swing.JFrame {
     private void editTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editTextFieldActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,7 +465,11 @@ public class EditEmployeeView extends javax.swing.JFrame {
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JButton getUNPWButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JLabel newPasswordLabel;

@@ -40,6 +40,11 @@ public class PayrollTable {
         catch(SQLException sql){
             System.out.println(sql.getMessage());
         }
+        
+        addEmployeePayrollInfo("manager", 10, 10);
+        addEmployeePayrollInfo("server", 10, 10);
+        addEmployeePayrollInfo("host", 10, 10);
+        addEmployeePayrollInfo("chef", 10, 10);
     }
     
     public ArrayList<String> getEmployeePayrollInfo(String username) {
@@ -59,5 +64,20 @@ public class PayrollTable {
             System.out.println(sql.getMessage());
         }
         return list; 
+    }
+    
+    public void addEmployeePayrollInfo(String username, int hours, int hourly) {
+
+        try{
+            PreparedStatement prep = conn.prepareStatement("insert into payroll values(?,?,?)");
+            prep.setString(1, username);
+            prep.setString(2, hours+"");
+            prep.setString(3, hourly+"");
+            prep.executeUpdate();
+        }
+        catch(SQLException sql){
+            System.out.println(sql.getMessage());
+        }
+
     }
 }

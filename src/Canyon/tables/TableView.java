@@ -6,6 +6,7 @@
 package Canyon.tables;
 
 import Canyon.employees.ServerView;
+import Canyon.orders.Order;
 
 /**
  *
@@ -23,7 +24,7 @@ public class TableView extends javax.swing.JFrame {
     String table8Status = "Unoccupied";
     /**
      * Creates new form Table
-     */
+     */    
     public TableView() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -252,8 +253,10 @@ public class TableView extends javax.swing.JFrame {
     private void table1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table1ButtonActionPerformed
         // TODO add your handling code here:
         if("Unoccupied".equals(table1Status)) {
+            Order order = new Order();
+            order.setTable("1");
             this.setVisible(false);
-            SeatView seatView = new SeatView();
+            SeatView seatView = new SeatView(order);
             seatView.setVisible(true);
         }
     }//GEN-LAST:event_table1ButtonActionPerformed
@@ -261,8 +264,10 @@ public class TableView extends javax.swing.JFrame {
     private void table2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table2ButtonActionPerformed
         // TODO add your handling code here:
         if("Unoccupied".equals(table2Status)) {
+            Order order = new Order();
+            order.setTable("2");
             this.setVisible(false);
-            SeatView seatView = new SeatView();
+            SeatView seatView = new SeatView(order);
             seatView.setVisible(true);
         }
     }//GEN-LAST:event_table2ButtonActionPerformed
@@ -270,8 +275,10 @@ public class TableView extends javax.swing.JFrame {
     private void table3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table3ButtonActionPerformed
         // TODO add your handling code here:
         if("Unoccupied".equals(table3Status)) {
+            Order order = new Order();
+            order.setTable("3");
             this.setVisible(false);
-            SeatView seatView = new SeatView();
+            SeatView seatView = new SeatView(order);
             seatView.setVisible(true);
         }
     }//GEN-LAST:event_table3ButtonActionPerformed
@@ -279,8 +286,10 @@ public class TableView extends javax.swing.JFrame {
     private void table4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table4ButtonActionPerformed
         // TODO add your handling code here:
         if("Unoccupied".equals(table4Status)) {
+            Order order = new Order();
+            order.setTable("4");
             this.setVisible(false);
-            SeatView seatView = new SeatView();
+            SeatView seatView = new SeatView(order);
             seatView.setVisible(true);
         }
     }//GEN-LAST:event_table4ButtonActionPerformed
@@ -288,8 +297,10 @@ public class TableView extends javax.swing.JFrame {
     private void table5ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table5ButtonActionPerformed
         // TODO add your handling code here:
         if("Unoccupied".equals(table5Status)) {
+            Order order = new Order();
+            order.setTable("5");
             this.setVisible(false);
-            SeatView seatView = new SeatView();
+            SeatView seatView = new SeatView(order);
             seatView.setVisible(true);
         }
     }//GEN-LAST:event_table5ButtonActionPerformed
@@ -297,8 +308,10 @@ public class TableView extends javax.swing.JFrame {
     private void table6ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table6ButtonActionPerformed
         // TODO add your handling code here:
         if("Unoccupied".equals(table6Status)) {
+            Order order = new Order();
+            order.setTable("6");
             this.setVisible(false);
-            SeatView seatView = new SeatView();
+            SeatView seatView = new SeatView(order);
             seatView.setVisible(true);
         }
     }//GEN-LAST:event_table6ButtonActionPerformed
@@ -306,8 +319,10 @@ public class TableView extends javax.swing.JFrame {
     private void table7ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table7ButtonActionPerformed
         // TODO add your handling code here:
         if("Unoccupied".equals(table7Status)) {
+            Order order = new Order();
+            order.setTable("7");
             this.setVisible(false);
-            SeatView seatView = new SeatView();
+            SeatView seatView = new SeatView(order);
             seatView.setVisible(true);
         }
     }//GEN-LAST:event_table7ButtonActionPerformed
@@ -315,8 +330,10 @@ public class TableView extends javax.swing.JFrame {
     private void table8ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_table8ButtonActionPerformed
         // TODO add your handling code here:
         if("Unoccupied".equals(table8Status)) {
+            Order order = new Order();
+            order.setTable("8");
             this.setVisible(false);
-            SeatView seatView = new SeatView();
+            SeatView seatView = new SeatView(order);
             seatView.setVisible(true);
         }
     }//GEN-LAST:event_table8ButtonActionPerformed

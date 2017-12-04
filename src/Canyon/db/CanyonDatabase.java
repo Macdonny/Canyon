@@ -22,6 +22,7 @@ public class CanyonDatabase {
     EmployeesTable employeesTable;
     MenuTable menuTable;
     PayrollTable payrollTable;
+    OrderTable orderTable;
 
     // Connect to the local Derby/SQL database
     // Username for the Database is "root" and the password is "toor"
@@ -45,6 +46,8 @@ public class CanyonDatabase {
         menuTable.create();
         payrollTable = PayrollTable.getInstance();
         payrollTable.create();
+        orderTable = OrderTable.getInstance();
+        orderTable.create();
 
         // To add:
         // Table table

@@ -1,4 +1,4 @@
-package Canyon.menu;
+package Canyon.menu.forms;
 
 import Canyon.db.tables.MenuTable;
 import java.awt.Color;
@@ -28,9 +28,12 @@ public class AddMenuItemView extends javax.swing.JFrame {
         priceLabel = new javax.swing.JLabel();
         itemNameTextField = new javax.swing.JTextField();
         priceTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        itemCategoryList = new javax.swing.JList<>();
         confirmButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         validateItemButton = new javax.swing.JButton();
+        itemCategoryLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -60,6 +63,13 @@ public class AddMenuItemView extends javax.swing.JFrame {
             }
         });
 
+        itemCategoryList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "appetizer", "entree", "side item", "dessert", "liquor", "beer", "wine", "drink", "mixed drink" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(itemCategoryList);
+
         confirmButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         confirmButton.setText("Confirm");
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +94,8 @@ public class AddMenuItemView extends javax.swing.JFrame {
             }
         });
 
+        itemCategoryLabel.setText("Category");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -97,16 +109,18 @@ public class AddMenuItemView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(itemNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(priceLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(newItemLabel)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priceLabel)
+                            .addComponent(newItemLabel)
+                            .addComponent(itemCategoryLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(priceTextField)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -122,13 +136,17 @@ public class AddMenuItemView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priceLabel)
                     .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(itemCategoryLabel)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(validateItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,7 +157,9 @@ public class AddMenuItemView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,7 +168,7 @@ public class AddMenuItemView extends javax.swing.JFrame {
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
 
-        menuTable.insertItem(itemNameTextField.getText(), Integer.parseInt(priceTextField.getText()));
+        menuTable.insertItem(itemNameTextField.getText(), Double.parseDouble(priceTextField.getText()), itemCategoryList.getSelectedValue());
         
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
@@ -161,12 +181,14 @@ public class AddMenuItemView extends javax.swing.JFrame {
     private void validateItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateItemButtonActionPerformed
         // TODO add your handling code here:
                 
-        if (itemNameTextField.getText().equals("") && priceTextField.getText().equals("")) {
+        if (itemNameTextField.getText().equals("") 
+                || priceTextField.getText().equals("") 
+                || itemCategoryList.getSelectedValue().equals("")) {
             
             confirmButton.setVisible(false);
         } else {
             
-            if (isInt(priceTextField.getText())) {
+            if (isDouble(priceTextField.getText())) {
                 confirmButton.setVisible(true);
             } else {
                 priceTextField.setForeground(Color.red);
@@ -186,19 +208,13 @@ public class AddMenuItemView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_clearConfirm
 
-    public boolean isInt(String s) {
-        boolean isInt = false;
-        
-        for (int i = 0; i < s.length(); i++) {
-            if (Character.isDigit(s.charAt(i))) {
-                isInt = true;
-            } else {
-                isInt = false;
-                return isInt;
-            }
+    public boolean isDouble(String str) {
+        try {
+            double v = Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException nfe) {
         }
-        
-        return isInt;
+        return false;
     }
     
     /**
@@ -240,9 +256,12 @@ public class AddMenuItemView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton confirmButton;
+    private javax.swing.JLabel itemCategoryLabel;
+    private javax.swing.JList<String> itemCategoryList;
     private javax.swing.JLabel itemNameLabel;
     private javax.swing.JTextField itemNameTextField;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel newItemLabel;
     private javax.swing.JLabel priceLabel;
     private javax.swing.JTextField priceTextField;

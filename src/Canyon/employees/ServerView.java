@@ -8,21 +8,60 @@ package Canyon.employees;
 import Canyon.LoginView;
 import Canyon.billing.BillingView;
 import Canyon.billing.PaymentView;
+import Canyon.db.tables.MenuTable;
+import Canyon.db.tables.OrderTable;
+import Canyon.orders.MenuItem;
+import Canyon.orders.Order;
 import Canyon.other.OtherView;
 import Canyon.tables.TableView;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author macdonny
  */
 public class ServerView extends javax.swing.JFrame {
+    
+    MenuTable menuTable;
+    OrderTable orderTable;
+    DefaultListModel<String> model = new DefaultListModel<>();
+    String[] queueList = new String[100];
+    Order[] order = new Order[100];
 
     /**
      * Creates new form ServerView
      */
     public ServerView() {
+        menuTable = MenuTable.getInstance();
+        orderTable = OrderTable.getInstance();
+        
+        try {
+            refreshQueue();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+        public void refreshQueue() throws SQLException {
+        
+        ArrayList<Order> ordersOnQueue = orderTable.getAllUnfulfilledOrders();
+        String queueOrder;
+        
+        for (int i = 0; i < ordersOnQueue.size(); i++) {
+            queueOrder = "Table: " + (ordersOnQueue.get(i).getTable()) + 
+                    " Seat: " + (ordersOnQueue.get(i).getSeat()) +
+                    " Item: " + (ordersOnQueue.get(i).getItem());
+            queueList[i] = queueOrder;
+            order[i] = ordersOnQueue.get(i);
+        }
+        
     }
 
     /**
@@ -43,9 +82,9 @@ public class ServerView extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,33 +183,37 @@ public class ServerView extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setText("Queued Orders");
+
+        jList1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jList1.setForeground(new java.awt.Color(42, 49, 50));
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            public int getSize() { return queueList.length; }
+            public String getElementAt(int i) { return queueList[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(182, 182, 182)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -247,16 +290,48 @@ public class ServerView extends javax.swing.JFrame {
 
     private void paymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentButtonActionPerformed
         // TODO add your handling code here:
+        int[] ordersIndices = jList1.getSelectedIndices();
+        double itemsCost = 0;
+        
+        for(int index : ordersIndices) {
+            Order orderItem = order[index];
+            double cost = menuTable.getPrice(orderItem.getItem());
+            itemsCost += cost;
+            orderTable.deleteOrder(orderItem.getTable(), orderItem.getSeat(), orderItem.getItem());
+        }
+        
+        try {
+            refreshQueue();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         this.setVisible(false);
-        PaymentView paymentView = new PaymentView();
+        PaymentView paymentView = new PaymentView(itemsCost);
         paymentView.setVisible(true);
     }//GEN-LAST:event_paymentButtonActionPerformed
 
     private void billingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billingButtonActionPerformed
         // TODO add your handling code here:
-//        this.setVisible(false);
-//        BillingView billingView = new BillingView();
-//        billingView.setVisible(true);
+                int[] ordersIndices = jList1.getSelectedIndices();
+        double itemsCost = 0;
+        
+        for(int index : ordersIndices) {
+            Order orderItem = order[index];
+            double cost = menuTable.getPrice(orderItem.getItem());
+            itemsCost += cost;
+            orderTable.deleteOrder(orderItem.getTable(), orderItem.getSeat(), orderItem.getItem());
+        }
+        
+        try {
+            refreshQueue();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServerView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        this.setVisible(false);
+        BillingView billingView = new BillingView(itemsCost);
+        billingView.setVisible(true);
     }//GEN-LAST:event_billingButtonActionPerformed
 
     private void tableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tableButtonActionPerformed
@@ -312,12 +387,12 @@ public class ServerView extends javax.swing.JFrame {
     private javax.swing.JButton billingButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton otherButton;
     private javax.swing.JButton paymentButton;

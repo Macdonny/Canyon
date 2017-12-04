@@ -7,6 +7,7 @@ would not see the manager options.
  */
 import Canyon.db.tables.EmployeesTable;
 import Canyon.employees.ChefView;
+import Canyon.employees.Employee;
 import Canyon.employees.HostView;
 import Canyon.employees.ServerView;
 import Canyon.managers.ManagerView;
@@ -200,12 +201,15 @@ public class LoginView extends javax.swing.JFrame {
 
         // Checks to see if the username is in database
         if (employeesTable.VerifyLogin(username)) {
-            if (password.equals(employeesTable.ViewEmployee(username).get(3))) {
+            ArrayList<Employee> usernames = employeesTable.ViewEmployee(username);
+            Employee loginUser = usernames.get(0);
+            
+            if (password.equals(loginUser.getPassword())) {
                 this.login = true;
                 invalidText.setVisible(false);
                 
                 // If the user is a manager, load the manager window
-                switch (Integer.parseInt(employeesTable.ViewEmployee(username).get(4))) {
+                switch (loginUser.getPosition()) {
                     case 1:
                         System.out.println("Manager Login");
                         this.setVisible(false);
@@ -257,9 +261,9 @@ public class LoginView extends javax.swing.JFrame {
 
     private void clearPasswordText(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearPasswordText
         // TODO add your handling code here:
-        if (passField.getText().equals("Password")) {
-            passField.setText("");
-        }
+//        if (passField.getText().equals("Password")) {
+//            passField.setText("");
+//        }
         
         if (userField.getText().equals("")) {
             userField.setText("Username");
@@ -268,7 +272,7 @@ public class LoginView extends javax.swing.JFrame {
 
     private void passFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passFieldMouseEntered
         // TODO add your handling code here:
-        passField.setText("********");
+//        passField.setText("********");
     }//GEN-LAST:event_passFieldMouseEntered
     // This method causes an extra login
     private void LoginActionViaClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginActionViaClick

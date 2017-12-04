@@ -234,13 +234,17 @@ public class PayrollView extends javax.swing.JFrame {
 
         ArrayList<String> employeePayroll = new ArrayList();
         employeePayroll = payrollTable.getEmployeePayrollInfo(employeeUsername[jList1.getSelectedIndex()]);
+        
+        if(employeePayroll != null){
+            String employeeInfoString =
+            "Name: " + employeeInfo.get("name") + "\n"
+            + "Hours this week: " + employeePayroll.get(1) + "\n"
+            + "Hourly Pay Rate: " + employeePayroll.get(2) + "\n";
 
-        String employeeInfoString =
-        "Name: " + employeeInfo.get("name") + "\n"
-        + "Hours this week: " + employeePayroll.get(1) + "\n"
-        + "Hourly Pay Rate: " + employeePayroll.get(2) + "\n";
-
-        employeeTextPane.setText(employeeInfoString);
+            employeeTextPane.setText(employeeInfoString);
+        } else {
+            employeeTextPane.setText("This employee does not have this info");
+        }
     }//GEN-LAST:event_viewEmployeeInfoActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked

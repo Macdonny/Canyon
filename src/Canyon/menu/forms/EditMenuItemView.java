@@ -1,5 +1,5 @@
 
-package Canyon.menu;
+package Canyon.menu.forms;
 import Canyon.db.tables.MenuTable;
 import java.awt.Color;
 
@@ -37,6 +37,8 @@ public class EditMenuItemView extends javax.swing.JFrame {
         itemNameTextField = new javax.swing.JTextField();
         priceLabel = new javax.swing.JLabel();
         priceTextField = new javax.swing.JTextField();
+        categoryLabel = new javax.swing.JLabel();
+        categoryTextField = new javax.swing.JTextField();
         validateItemButton = new javax.swing.JButton();
         confirmButton = new javax.swing.JButton();
 
@@ -147,6 +149,8 @@ public class EditMenuItemView extends javax.swing.JFrame {
             }
         });
 
+        categoryLabel.setText("Category");
+
         validateItemButton.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         validateItemButton.setText("Validate Item");
         validateItemButton.addActionListener(new java.awt.event.ActionListener() {
@@ -172,17 +176,21 @@ public class EditMenuItemView extends javax.swing.JFrame {
                 .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addPanelLayout.createSequentialGroup()
                         .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(validateItemButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(addPanelLayout.createSequentialGroup()
                         .addComponent(itemNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(itemNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addPanelLayout.createSequentialGroup()
-                        .addComponent(priceLabel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPanelLayout.createSequentialGroup()
+                        .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priceLabel)
+                            .addComponent(categoryLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(priceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                            .addComponent(categoryTextField))))
                 .addContainerGap())
         );
         addPanelLayout.setVerticalGroup(
@@ -196,9 +204,13 @@ public class EditMenuItemView extends javax.swing.JFrame {
                 .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priceLabel)
                     .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
+                .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(categoryLabel)
+                    .addComponent(categoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(validateItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(2, 2, 2)
                 .addGroup(addPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -279,7 +291,9 @@ public class EditMenuItemView extends javax.swing.JFrame {
     private void validateItemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateItemButtonActionPerformed
         // TODO add your handling code here:
 
-        if (itemNameTextField.getText().equals("") && priceTextField.getText().equals("")) {
+        if (itemNameTextField.getText().equals("") 
+                || priceTextField.getText().equals("") 
+                || categoryTextField.getText().equals("")) {
 
             confirmButton.setVisible(false);
         } else {
@@ -313,7 +327,7 @@ public class EditMenuItemView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         menuTable.deleteItem(removeTextField.getText());
-        menuTable.insertItem(itemNameTextField.getText(), Integer.parseInt(priceTextField.getText()));
+        menuTable.insertItem(itemNameTextField.getText(), Integer.parseInt(priceTextField.getText()), categoryTextField.getText());
 
         this.setVisible(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
@@ -370,6 +384,8 @@ public class EditMenuItemView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addPanel;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel categoryLabel;
+    private javax.swing.JTextField categoryTextField;
     private javax.swing.JButton confirmButton;
     private javax.swing.JTextArea itemListTextArea;
     private javax.swing.JLabel itemNameLabel;

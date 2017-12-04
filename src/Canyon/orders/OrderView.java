@@ -12,11 +12,19 @@ import Canyon.tables.SeatView;
  * @author macdonny
  */
 public class OrderView extends javax.swing.JFrame {
+    
+    Order selectedItemOrder;
 
     /**
      * Creates new form Order
      */
-    public OrderView() {
+    public OrderView(Order seatOrder) {
+        selectedItemOrder = seatOrder;
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    OrderView() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -33,21 +41,19 @@ public class OrderView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        appetizersButton = new javax.swing.JButton();
+        entreesButton = new javax.swing.JButton();
+        sideItemsButton = new javax.swing.JButton();
+        dessertButton = new javax.swing.JButton();
+        liquorButton = new javax.swing.JButton();
+        beersButton = new javax.swing.JButton();
+        winesButton = new javax.swing.JButton();
+        mixedDrinkButton = new javax.swing.JButton();
         previousButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(960, 700));
         setMinimumSize(new java.awt.Dimension(960, 700));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(960, 700));
 
         jPanel1.setBackground(new java.awt.Color(51, 107, 135));
         jPanel1.setMaximumSize(new java.awt.Dimension(960, 700));
@@ -79,61 +85,101 @@ public class OrderView extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setText("Appetizers");
-        jButton1.setMaximumSize(new java.awt.Dimension(300, 125));
-        jButton1.setMinimumSize(new java.awt.Dimension(300, 125));
-        jButton1.setPreferredSize(new java.awt.Dimension(300, 125));
-        jButton1.setSize(new java.awt.Dimension(300, 125));
+        appetizersButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        appetizersButton.setText("Appetizer");
+        appetizersButton.setMaximumSize(new java.awt.Dimension(300, 125));
+        appetizersButton.setMinimumSize(new java.awt.Dimension(300, 125));
+        appetizersButton.setPreferredSize(new java.awt.Dimension(300, 125));
+        appetizersButton.setSize(new java.awt.Dimension(300, 125));
+        appetizersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appetizersButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton2.setText("Entrees");
-        jButton2.setMaximumSize(new java.awt.Dimension(300, 125));
-        jButton2.setMinimumSize(new java.awt.Dimension(300, 125));
-        jButton2.setPreferredSize(new java.awt.Dimension(300, 125));
-        jButton2.setSize(new java.awt.Dimension(300, 125));
+        entreesButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        entreesButton.setText("Entree");
+        entreesButton.setMaximumSize(new java.awt.Dimension(300, 125));
+        entreesButton.setMinimumSize(new java.awt.Dimension(300, 125));
+        entreesButton.setPreferredSize(new java.awt.Dimension(300, 125));
+        entreesButton.setSize(new java.awt.Dimension(300, 125));
+        entreesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entreesButtonActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton3.setText("Side Items");
-        jButton3.setMaximumSize(new java.awt.Dimension(300, 125));
-        jButton3.setMinimumSize(new java.awt.Dimension(300, 125));
-        jButton3.setPreferredSize(new java.awt.Dimension(300, 125));
-        jButton3.setSize(new java.awt.Dimension(300, 125));
+        sideItemsButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        sideItemsButton.setText("Side Item");
+        sideItemsButton.setMaximumSize(new java.awt.Dimension(300, 125));
+        sideItemsButton.setMinimumSize(new java.awt.Dimension(300, 125));
+        sideItemsButton.setPreferredSize(new java.awt.Dimension(300, 125));
+        sideItemsButton.setSize(new java.awt.Dimension(300, 125));
+        sideItemsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sideItemsButtonActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton4.setText("Desserts");
-        jButton4.setMaximumSize(new java.awt.Dimension(300, 125));
-        jButton4.setMinimumSize(new java.awt.Dimension(300, 125));
-        jButton4.setPreferredSize(new java.awt.Dimension(300, 125));
-        jButton4.setSize(new java.awt.Dimension(300, 125));
+        dessertButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        dessertButton.setText("Dessert");
+        dessertButton.setMaximumSize(new java.awt.Dimension(300, 125));
+        dessertButton.setMinimumSize(new java.awt.Dimension(300, 125));
+        dessertButton.setPreferredSize(new java.awt.Dimension(300, 125));
+        dessertButton.setSize(new java.awt.Dimension(300, 125));
+        dessertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dessertButtonActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton5.setText("Liquor");
-        jButton5.setMaximumSize(new java.awt.Dimension(300, 125));
-        jButton5.setMinimumSize(new java.awt.Dimension(300, 125));
-        jButton5.setPreferredSize(new java.awt.Dimension(300, 125));
-        jButton5.setSize(new java.awt.Dimension(300, 125));
+        liquorButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        liquorButton.setText("Liquor");
+        liquorButton.setMaximumSize(new java.awt.Dimension(300, 125));
+        liquorButton.setMinimumSize(new java.awt.Dimension(300, 125));
+        liquorButton.setPreferredSize(new java.awt.Dimension(300, 125));
+        liquorButton.setSize(new java.awt.Dimension(300, 125));
+        liquorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                liquorButtonActionPerformed(evt);
+            }
+        });
 
-        jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton6.setText("Beer");
-        jButton6.setMaximumSize(new java.awt.Dimension(300, 125));
-        jButton6.setMinimumSize(new java.awt.Dimension(300, 125));
-        jButton6.setPreferredSize(new java.awt.Dimension(300, 125));
-        jButton6.setSize(new java.awt.Dimension(300, 125));
+        beersButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        beersButton.setText("Beer");
+        beersButton.setMaximumSize(new java.awt.Dimension(300, 125));
+        beersButton.setMinimumSize(new java.awt.Dimension(300, 125));
+        beersButton.setPreferredSize(new java.awt.Dimension(300, 125));
+        beersButton.setSize(new java.awt.Dimension(300, 125));
+        beersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                beersButtonActionPerformed(evt);
+            }
+        });
 
-        jButton7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton7.setText("Wine");
-        jButton7.setMaximumSize(new java.awt.Dimension(300, 125));
-        jButton7.setMinimumSize(new java.awt.Dimension(300, 125));
-        jButton7.setPreferredSize(new java.awt.Dimension(300, 125));
-        jButton7.setSize(new java.awt.Dimension(300, 125));
+        winesButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        winesButton.setText("Wine");
+        winesButton.setMaximumSize(new java.awt.Dimension(300, 125));
+        winesButton.setMinimumSize(new java.awt.Dimension(300, 125));
+        winesButton.setPreferredSize(new java.awt.Dimension(300, 125));
+        winesButton.setSize(new java.awt.Dimension(300, 125));
+        winesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                winesButtonActionPerformed(evt);
+            }
+        });
 
-        jButton8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton8.setText("Mixed Drinks");
-        jButton8.setMaximumSize(new java.awt.Dimension(300, 125));
-        jButton8.setMinimumSize(new java.awt.Dimension(300, 125));
-        jButton8.setPreferredSize(new java.awt.Dimension(300, 125));
-        jButton8.setSize(new java.awt.Dimension(300, 125));
+        mixedDrinkButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        mixedDrinkButton.setText("Mixed Drink");
+        mixedDrinkButton.setMaximumSize(new java.awt.Dimension(300, 125));
+        mixedDrinkButton.setMinimumSize(new java.awt.Dimension(300, 125));
+        mixedDrinkButton.setPreferredSize(new java.awt.Dimension(300, 125));
+        mixedDrinkButton.setSize(new java.awt.Dimension(300, 125));
+        mixedDrinkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mixedDrinkButtonActionPerformed(evt);
+            }
+        });
 
         previousButton.setText("Previous Screen");
         previousButton.addActionListener(new java.awt.event.ActionListener() {
@@ -154,18 +200,18 @@ public class OrderView extends javax.swing.JFrame {
                 .addGap(87, 87, 87)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(entreesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(appetizersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(sideItemsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dessertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(101, 101, 101)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(winesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(beersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(liquorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(mixedDrinkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(previousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -177,20 +223,20 @@ public class OrderView extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(appetizersButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(liquorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(entreesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(beersButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sideItemsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(winesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dessertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mixedDrinkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -224,9 +270,65 @@ public class OrderView extends javax.swing.JFrame {
 
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
         this.setVisible(false);
-        SeatView seatView = new SeatView();
+        SeatView seatView = new SeatView(selectedItemOrder);
         seatView.setVisible(true);
     }//GEN-LAST:event_previousButtonActionPerformed
+
+    private void appetizersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appetizersButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SelectedItemView selectedItemView = new SelectedItemView(appetizersButton.getText().toLowerCase(), selectedItemOrder);
+        selectedItemView.setVisible(true);
+    }//GEN-LAST:event_appetizersButtonActionPerformed
+
+    private void entreesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entreesButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SelectedItemView selectedItemView = new SelectedItemView(entreesButton.getText().toLowerCase(), selectedItemOrder);
+        selectedItemView.setVisible(true);
+    }//GEN-LAST:event_entreesButtonActionPerformed
+
+    private void sideItemsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sideItemsButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SelectedItemView selectedItemView = new SelectedItemView(sideItemsButton.getText().toLowerCase(), selectedItemOrder);
+        selectedItemView.setVisible(true);
+    }//GEN-LAST:event_sideItemsButtonActionPerformed
+
+    private void dessertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dessertButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SelectedItemView selectedItemView = new SelectedItemView(dessertButton.getText().toLowerCase(), selectedItemOrder);
+        selectedItemView.setVisible(true);
+    }//GEN-LAST:event_dessertButtonActionPerformed
+
+    private void liquorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_liquorButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SelectedItemView selectedItemView = new SelectedItemView(liquorButton.getText().toLowerCase(), selectedItemOrder);
+        selectedItemView.setVisible(true);
+    }//GEN-LAST:event_liquorButtonActionPerformed
+
+    private void beersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beersButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SelectedItemView selectedItemView = new SelectedItemView(beersButton.getText().toLowerCase(), selectedItemOrder);
+        selectedItemView.setVisible(true);
+    }//GEN-LAST:event_beersButtonActionPerformed
+
+    private void winesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winesButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SelectedItemView selectedItemView = new SelectedItemView(winesButton.getText().toLowerCase(), selectedItemOrder);
+        selectedItemView.setVisible(true);
+    }//GEN-LAST:event_winesButtonActionPerformed
+
+    private void mixedDrinkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mixedDrinkButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        SelectedItemView selectedItemView = new SelectedItemView(mixedDrinkButton.getText().toLowerCase(), selectedItemOrder);
+        selectedItemView.setVisible(true);
+    }//GEN-LAST:event_mixedDrinkButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,17 +367,17 @@ public class OrderView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton appetizersButton;
+    private javax.swing.JButton beersButton;
+    private javax.swing.JButton dessertButton;
+    private javax.swing.JButton entreesButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton liquorButton;
+    private javax.swing.JButton mixedDrinkButton;
     private javax.swing.JButton previousButton;
+    private javax.swing.JButton sideItemsButton;
+    private javax.swing.JButton winesButton;
     // End of variables declaration//GEN-END:variables
 }

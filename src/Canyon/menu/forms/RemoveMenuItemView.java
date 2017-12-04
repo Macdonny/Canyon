@@ -1,4 +1,4 @@
-package Canyon.menu;
+package Canyon.menu.forms;
 
 import Canyon.db.tables.MenuTable;
 
